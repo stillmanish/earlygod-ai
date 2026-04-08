@@ -1,0 +1,22 @@
+{
+  "gameTitle": "Ghost of Yotei",
+  "screenRegions": {
+    "health": { "x": 50, "y": 50, "width": 150, "height": 20, "type": "bar_percentage" },
+    "location": { "x": 100, "y": 900, "width": 200, "height": 30, "type": "text" }
+  },
+  "eventKeywords": {
+    "boss": ["warlord", "bandit chief", "ronin leader", "duelist", "defeated", "killed", "beat", "won duel"],
+    "location": ["hokkaido", "yotei", "shrine", "village", "fort", "reached", "found", "discovered"],
+    "quest": ["tale", "main story", "side quest", "started", "completed", "finished"],
+    "weapon": ["katana", "bow", "kunai", "smoke bomb", "upgraded", "unlocked", "obtained"],
+    "armor": ["armor set", "ghost armor", "ronin attire", "wearing", "equipped", "obtained"],
+    "skill": ["stance", "technique", "ghost ability", "unlocked", "learned", "mastered"],
+    "item": ["charm", "material", "resource", "collectible", "found", "collected", "need"],
+    "progress": ["reputation", "honor", "ghost rank", "increased"]
+  },
+  "entityPatterns": {
+    "boss_name": "(?:defeated|killed|beat) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "location_name": "(?:at|reached|found) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "item_name": "(?:found|got|obtained) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)"
+  }
+}

@@ -1,0 +1,129 @@
+# ============================================================
+# earlygod.ai — root .gitignore
+# ============================================================
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables (NEVER commit)
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.local
+
+# Service account credentials (NEVER commit)
+*service-account*.json
+*-credentials*.json
+*-key.json
+google-credentials.json
+gcp-credentials.json
+
+# Build output
+dist/
+build/
+out/
+*.exe
+*.dmg
+*.deb
+*.AppImage
+**/dist/
+**/build/
+**/out/
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+.project
+.classpath
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Electron Builder artifacts
+release/
+electron-builder.env
+
+# Local game saves and screenshots
+saves/
+screenshots/
+captures/
+recordings/
+
+# Vector data / embeddings
+vertex-data/
+embeddings/
+*.faiss
+*.pkl
+
+# Distribution
+For Distribution/builds/
+For\ Distribution/builds/
+
+# Temp files
+tmp/
+temp/
+.tmp/
+*.tmp
+*.bak
+*.old
+*~
+*.swp
+*.swo
+
+# Working / scratch files (defensive — never commit these)
+*.scratch
+*.scratch.*
+SCRATCH*
+WIP*
+TODO.md
+NOTES.md
+notes/
+scratch/
+working/
+WORKING_*
+DRAFT_*
+*_DRAFT.*
+*_OLD.*
+*_BACKUP.*
+*_BAK.*
+
+# AI assistant working files (defensive)
+.claude/
+.cursor/
+.cline/
+.aider*
+.continue/
+RELEASE_PLAN.md
+CLEANUP_*.md
+AUDIT_*.md
+SIMPLIFY_*.md
+
+# Optional: dev notes (uncomment if you want to ignore)
+# dev-notes/
+# *_FIX.md
+# *_REFACTOR.md

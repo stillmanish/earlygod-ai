@@ -1,0 +1,24 @@
+{
+  "gameTitle": "Crimson Desert",
+  "screenRegions": {
+    "health": { "x": 50, "y": 50, "width": 200, "height": 25, "type": "bar_percentage" },
+    "stamina": { "x": 50, "y": 80, "width": 150, "height": 20, "type": "bar_percentage" },
+    "spirit": { "x": 50, "y": 110, "width": 150, "height": 20, "type": "bar_percentage" },
+    "location": { "x": 100, "y": 900, "width": 300, "height": 40, "type": "text" }
+  },
+  "eventKeywords": {
+    "boss": ["myurdin", "lava myurdin", "matthias", "kearush", "lucian bastier", "awakened lucian", "ludvig", "awakened ludvig", "one armed ludvig", "hexe marie", "golden star", "queen stoneback", "stoneback crab", "white horn", "staglord", "tenebrum", "walter lanford", "cassius morten", "crimson nightmare", "crimson warden", "draven", "crowcaller", "fortain", "cursed knight", "gabriel caliburn", "gregor", "halberd of carnage", "kailok", "hornsplitter", "marni", "excavatron", "muskan", "reed devil", "antumbra", "defeated", "killed", "beat", "finally got", "slain", "took down"],
+    "location": ["hernand", "demeniss", "delesyia", "pailune", "crimson desert", "pywel", "tommaso", "varnia", "urdavah", "arcosa", "kharonso", "tashkalp", "trader's expanse", "saltroad camp", "izvatu", "pororin forest", "steel mountains", "deepfog basin", "duskwood", "meandering hills", "sunrise plains", "haunted hill", "drakesfall gorge", "trembling woods", "reached", "arrived", "discovered", "found", "entered"],
+    "quest": ["greymanes", "kliff", "damiane", "oongka", "faction quest", "main quest", "story", "mission", "started", "completed", "finished", "accepted"],
+    "weapon": ["sword", "greatsword", "spear", "halberd", "warhammer", "greataxe", "bow", "musket", "shotgun", "pistol", "cannon", "shield", "dagger", "rapier", "staff", "equipped", "obtained", "found", "crafted", "bought", "upgraded"],
+    "skill": ["parry", "dodge", "counter", "grappling", "throw", "lariat", "body slam", "dropkick", "flying kick", "meteor kick", "force palm", "lightning surge", "frost mantle", "storm veil", "flame strike", "axiom force", "flight", "imbue element", "nature's grasp", "focus", "unlocked", "learned", "upgraded"],
+    "item": ["abyss artifact", "abyss gear", "meat", "healing", "potion", "relic", "treasure", "bell", "found", "collected", "obtained", "used"],
+    "build": ["stamina", "health", "spirit", "unarmed", "ranged", "melee", "grappling", "elemental"]
+  },
+  "entityPatterns": {
+    "boss_name": "(?:defeated|killed|beat|slain|took down) (?:the )?([A-Z][a-z]+(?: (?:the )?[A-Z][a-z]+)*)",
+    "location_name": "(?:in|at|reached|arrived at|entered) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "item_name": "(?:found|got|obtained|need|picked up) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "weapon_name": "(?:equipped|using|got|found|bought) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)"
+  }
+}

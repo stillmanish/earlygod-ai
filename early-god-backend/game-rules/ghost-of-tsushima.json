@@ -1,0 +1,24 @@
+{
+  "gameTitle": "Ghost of Tsushima",
+  "screenRegions": {
+    "health": { "x": 50, "y": 50, "width": 150, "height": 20, "type": "bar_percentage" },
+    "legend": { "x": 100, "y": 900, "width": 200, "height": 30, "type": "text" },
+    "technique_points": { "x": 1700, "y": 100, "width": 80, "height": 25, "type": "number" }
+  },
+  "eventKeywords": {
+    "boss": ["khan", "ryuzo", "shimura", "khotun", "straw hat", "duelist", "defeated", "killed", "beat", "won duel", "finally got"],
+    "location": ["golden temple", "fort", "shrine", "hot spring", "bamboo strike", "haiku", "reached", "found", "discovered", "arrived at"],
+    "quest": ["tale", "mythic tale", "yuriko", "masako", "norio", "ishikawa", "kenji", "yuna", "started", "completed", "finished"],
+    "weapon": ["katana", "tanto", "bow", "longbow", "charm", "upgraded", "unlocked", "obtained"],
+    "armor": ["samurai clan armor", "ghost armor", "ronin", "tadayori", "gosaku", "wearing", "upgraded", "obtained"],
+    "skill": ["stance", "stone stance", "water stance", "wind stance", "moon stance", "ghost weapon", "unlocked", "learned"],
+    "item": ["bamboo", "fox den", "record", "artifact", "vanity", "found", "collected", "need"],
+    "progress": ["act 1", "act 2", "act 3", "legend", "honor", "ghost", "choice"]
+  },
+  "entityPatterns": {
+    "boss_name": "(?:defeated|killed|beat|won against) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "location_name": "(?:at|reached|found|discovered) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "item_name": "(?:found|collected|got|obtained) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "quest_name": "(?:tale of|started|completed) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)"
+  }
+}

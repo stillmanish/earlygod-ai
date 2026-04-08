@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Mode</title>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: transparent;
+            color: #ffffff;
+            overflow: hidden;
+            user-select: none;
+            width: 100%;
+            height: 100%;
+            -webkit-app-region: drag;
+        }
+
+        .voice-overlay-container {
+            width: 400px;
+            height: 60px;
+            background: linear-gradient(135deg, 
+                rgba(15, 23, 42, 0.75) 0%, 
+                rgba(30, 41, 59, 0.75) 100%);
+            border-radius: 12px;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1rem;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .voice-overlay-container:hover {
+            border-color: rgba(251, 191, 36, 0.4);
+            box-shadow: 0 8px 40px rgba(251, 191, 36, 0.15);
+        }
+
+        .status-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #10b981;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+            animation: pulse 2s infinite;
+            flex-shrink: 0;
+        }
+
+        .status-indicator.listening {
+            background: #3b82f6;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+            animation: pulse 1s infinite;
+        }
+
+        .status-indicator.thinking {
+            background: #fbbf24;
+            box-shadow: 0 0 12px rgba(251, 191, 36, 0.6);
+            animation: pulse 0.8s infinite;
+        }
+
+        .status-indicator.speaking {
+            background: #10b981;
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+            animation: pulse 0.6s infinite;
+        }
+        
+        .status-indicator.reading {
+            background: #8b5cf6;
+            box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+            animation: pulse 0.7s infinite;
+        }
+        
+        .status-indicator.fetching {
+            background: #06b6d4;
+            box-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+            animation: pulse 0.8s infinite;
+        }
+        
+        .status-indicator.looking {
+            background: #8b5cf6;
+            box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+            animation: pulse 0.6s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(1.1); }
+        }
+        
+        /* Speaking animation - ripple effect */
+        @keyframes ripple {
+            0% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7),
+                            0 0 0 0 rgba(16, 185, 129, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(16, 185, 129, 0),
+                            0 0 0 20px rgba(16, 185, 129, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0),
+                            0 0 0 0 rgba(16, 185, 129, 0);
+            }
+        }
+        
+        .voice-overlay-container.speaking {
+            animation: ripple 1.5s infinite;
+        }
+
+        .status-text {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #f1f5f9;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .controls-section {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            -webkit-app-region: no-drag;
+        }
+
+        .control-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .control-btn:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+
+        .mic-btn {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .mic-btn:hover {
+            background: rgba(59, 130, 246, 0.3);
+        }
+
+        .mic-btn.muted {
+            background: rgba(239, 68, 68, 0.3);
+        }
+
+        .mic-btn.muted:hover {
+            background: rgba(239, 68, 68, 0.4);
+        }
+
+        .end-btn {
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        .end-btn:hover {
+            background: rgba(239, 68, 68, 0.3);
+        }
+
+        .mic-icon, .end-icon {
+            width: 18px;
+            height: 18px;
+            stroke: #ffffff;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="voice-overlay-container">
+        <div class="status-section">
+            <div class="status-indicator" id="status-indicator"></div>
+            <span class="status-text" id="status-text">Ready</span>
+        </div>
+        
+        <div class="controls-section">
+            <!-- Mic Button -->
+            <button class="control-btn mic-btn" id="mic-btn" title="Mute/Unmute Microphone">
+                <svg class="mic-icon" id="mic-icon" viewBox="0 0 24 24">
+                    <path d="M12 19v3"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <rect x="9" y="2" width="6" height="13" rx="3"/>
+                </svg>
+            </button>
+            
+            <!-- End Button -->
+            <button class="control-btn end-btn" id="end-btn" title="End Voice Mode">
+                <svg class="end-icon" viewBox="0 0 24 24">
+                    <line x1="18" y1="6" x2="6" y2="18"/>
+                    <line x1="6" y1="6" x2="18" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        console.log('🎤 Voice overlay loaded');
+        
+        // State
+        let isMicMuted = false;
+        let currentStatus = 'ready'; // ready, listening, thinking, speaking
+        
+        // Elements
+        const statusIndicator = document.getElementById('status-indicator');
+        const statusText = document.getElementById('status-text');
+        const micBtn = document.getElementById('mic-btn');
+        const micIcon = document.getElementById('mic-icon');
+        const endBtn = document.getElementById('end-btn');
+        
+        const overlayContainer = document.querySelector('.voice-overlay-container');
+        
+        // Update status display
+        function updateStatus(status) {
+            currentStatus = status.toLowerCase();
+            statusIndicator.className = 'status-indicator ' + currentStatus;
+            statusText.textContent = status; // Use status as-is (capitalized)
+            
+            // Add visual effect to container when speaking
+            if (currentStatus === 'speaking') {
+                overlayContainer.classList.add('speaking');
+            } else {
+                overlayContainer.classList.remove('speaking');
+            }
+        }
+        
+        // Toggle mic mute (now pauses voice mode)
+        function toggleMicMute() {
+            isMicMuted = !isMicMuted;
+            
+            if (isMicMuted) {
+                micBtn.classList.add('muted');
+                statusText.textContent = 'Paused';
+                micIcon.innerHTML = `
+                    <path d="M12 19v3"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <rect x="9" y="2" width="6" height="13" rx="3"/>
+                    <line x1="2" y1="2" x2="22" y2="22"/>
+                `;
+                
+                // Pause voice mode (stops audio streaming, preserves memory)
+                if (window.electronAPI && window.electronAPI.pauseVoiceMode) {
+                    window.electronAPI.pauseVoiceMode('manual');
+                }
+            } else {
+                micBtn.classList.remove('muted');
+                statusText.textContent = 'Listening';
+                micIcon.innerHTML = `
+                    <path d="M12 19v3"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <rect x="9" y="2" width="6" height="13" rx="3"/>
+                `;
+                
+                // Resume voice mode
+                if (window.electronAPI && window.electronAPI.resumeVoiceMode) {
+                    window.electronAPI.resumeVoiceMode();
+                }
+            }
+        }
+        
+        // Event listeners
+        micBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMicMute();
+        });
+        
+        endBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (window.electronAPI && window.electronAPI.endVoiceMode) {
+                window.electronAPI.endVoiceMode();
+            }
+        });
+        
+        // Listen for status updates from main process
+        if (window.electronAPI && window.electronAPI.onVoiceModeStatus) {
+            window.electronAPI.onVoiceModeStatus((status) => {
+                updateStatus(status);
+            });
+        }
+        
+        // Listen for mic mute from main process (hotkey)
+        if (window.electronAPI && window.electronAPI.onVoiceModeMicMute) {
+            window.electronAPI.onVoiceModeMicMute(() => {
+                toggleMicMute();
+            });
+        }
+        
+        console.log('✅ Voice overlay ready');
+    </script>
+</body>
+</html>
+

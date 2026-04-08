@@ -1,0 +1,90 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  syntax-check:
+    name: JS syntax check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check all JS files parse
+        run: |
+          fail=0
+          while IFS= read -r f; do
+            if ! node --check "$f" > /dev/null 2>&1; then
+              echo "::error file=$f::Syntax error"
+              fail=$((fail+1))
+            fi
+          done < <(find . -name '*.js' -not -path './*/node_modules/*' -not -path './*/__tests__/*')
+          if [ "$fail" -gt 0 ]; then
+            echo "Failed: $fail files"
+            exit 1
+          fi
+          echo "All JS files parse cleanly"
+
+  json-validate:
+    name: JSON validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate all JSON files
+        run: |
+          fail=0
+          while IFS= read -r f; do
+            if ! node -e "JSON.parse(require('fs').readFileSync('$f'))" > /dev/null 2>&1; then
+              echo "::error file=$f::Invalid JSON"
+              fail=$((fail+1))
+            fi
+          done < <(find . -name '*.json' -not -path './*/node_modules/*' -not -path './*/package-lock.json')
+          if [ "$fail" -gt 0 ]; then
+            echo "Failed: $fail files"
+            exit 1
+          fi
+          echo "All JSON files valid"
+
+  install-main-backend:
+    name: early-god-backend installs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: early-god-backend/package-lock.json
+      - run: cd early-god-backend && npm install --no-audit --no-fund
+
+  install-quest-mode:
+    name: boss-mode-backend installs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: boss-mode-backend/package-lock.json
+      - run: cd boss-mode-backend && npm install --no-audit --no-fund
+
+  install-frontend:
+    name: frontend installs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+      - run: cd frontend && npm install --no-audit --no-fund

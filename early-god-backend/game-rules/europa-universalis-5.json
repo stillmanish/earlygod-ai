@@ -1,0 +1,24 @@
+{
+  "gameTitle": "Europa Universalis V",
+  "screenRegions": {
+    "year": { "x": 1700, "y": 50, "width": 100, "height": 30, "type": "text" },
+    "treasury": { "x": 1600, "y": 100, "width": 150, "height": 25, "type": "number" },
+    "manpower": { "x": 1600, "y": 130, "width": 150, "height": 25, "type": "number" }
+  },
+  "eventKeywords": {
+    "nation": ["france", "ottoman", "spain", "england", "austria", "prussia", "russia", "ming", "playing as", "formed", "switched to"],
+    "war": ["war", "declared war", "peace deal", "won", "lost", "fighting", "at war with"],
+    "province": ["conquered", "cored", "colonized", "lost", "province"],
+    "diplomacy": ["alliance", "allied", "royal marriage", "vassalized", "integrated", "tributary"],
+    "technology": ["military tech", "admin tech", "diplo tech", "unlocked", "researched", "behind"],
+    "idea": ["idea group", "quantity", "quality", "offensive", "defensive", "economic", "completed", "took"],
+    "government": ["monarchy", "republic", "theocracy", "reformed", "changed government"],
+    "trade": ["trade node", "trade power", "dominating", "steering"],
+    "achievement": ["achievement", "unlocked"]
+  },
+  "entityPatterns": {
+    "nation_name": "(?:playing as|formed|switched to|as) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "province_name": "(?:conquered|took|lost) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "idea_group": "(?:completed|took|unlocked) ([A-Z][a-z]+(?: [A-Z][a-z]+)*) (?:ideas|idea group)"
+  }
+}

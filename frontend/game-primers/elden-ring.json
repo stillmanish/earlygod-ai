@@ -1,0 +1,78 @@
+{
+  "gameTitle": "Elden Ring",
+  "genre": "Souls-like Action RPG",
+  "developer": "FromSoftware",
+  "releaseDate": "2022-02-25",
+  "platforms": ["PC", "PS4", "PS5", "Xbox One", "Xbox Series X/S"],
+  
+  "overview": "Open-world souls-like where Tarnished warriors seek to become Elden Lord by collecting Great Runes and repairing the shattered Elden Ring. Features FromSoftware's signature difficult combat with unprecedented exploration freedom.",
+  
+  "coreMechanics": [
+    "Stamina management for attacks, dodges, and blocks",
+    "Flask of Crimson/Cerulean Tears (healing and FP restoration)",
+    "Sites of Grace (checkpoints, fast travel, level up)",
+    "Spirit Ashes (summonable allies for boss fights)",
+    "Torrent (spirit horse for exploration and combat)",
+    "Guard counter and stance breaking",
+    "Weapon Arts (special abilities powered by FP)",
+    "Open-world exploration with legacy dungeons"
+  ],
+  
+  "terminology": {
+    "Tarnished": "The player character, exiled and seeking the Elden Ring",
+    "Runes": "Currency and experience points (lost on death)",
+    "Grace": "Sites of Grace - checkpoints for rest and leveling",
+    "Vigor": "Health stat - most important for survivability",
+    "Endurance": "Stamina and equipment load",
+    "Mind": "FP (Focus Points) pool for spells and Ashes of War",
+    "FP": "Focus Points - mana for magic and weapon arts",
+    "Torrent": "Your spectral horse mount with double jump",
+    "Spirit Ashes": "Summonable NPC allies",
+    "Flask": "Healing items (refill at Grace)",
+    "Golden Seeds": "Upgrade flask charges",
+    "Sacred Tears": "Upgrade flask potency",
+    "Smithing Stones": "Weapon upgrade materials",
+    "Ashes of War": "Weapon skills you can swap",
+    "Legacy Dungeon": "Large interconnected castle-like areas",
+    "Erdtree": "Giant golden tree visible across the world"
+  },
+  
+  "commonQuestions": [
+    "What stats should I level first?",
+    "Where is the nearest Site of Grace?",
+    "How do I summon Spirit Ashes?",
+    "Where do I get more Flask charges?",
+    "What level should I be for this area?",
+    "How do I upgrade my weapon?",
+    "Where is Torrent's whistle?",
+    "Can I respec my character?"
+  ],
+  
+  "insiderTips": [
+    "Vigor is king - aim for 40+ by mid-game, 60 endgame",
+    "Spirit Ashes aren't cheap or shameful - they're designed for boss fights",
+    "Explore everywhere - many areas are optional but have great rewards",
+    "Golden Seeds and Sacred Tears massively increase survivability",
+    "You can run past most overworld enemies on Torrent",
+    "Stance breaking (guard counter/charged heavies) trivializes many bosses",
+    "Level your weapon to +3 before first major boss (Margit)",
+    "Summon bell found at Church of Elleh from vendor Renna"
+  ],
+  
+  "progressionSystem": {
+    "primary": "Level up stats at Sites of Grace using Runes",
+    "weaponUpgrade": "Smithing Stones (+1 to +25) or Somber Stones (unique weapons)",
+    "flaskUpgrade": "Golden Seeds (charges) and Sacred Tears (potency)",
+    "spiritUpgrade": "Glovewort for Spirit Ashes",
+    "questProgression": "Great Runes from demigod bosses"
+  },
+  
+  "startingAreas": [
+    "Limgrave - starting zone (levels 1-30)",
+    "Weeping Peninsula - early optional area",
+    "Stormveil Castle - first legacy dungeon",
+    "Liurnia - second major zone"
+  ],
+  
+  "estimatedPlaytime": "60-100 hours main story, 100+ for completionist"
+}

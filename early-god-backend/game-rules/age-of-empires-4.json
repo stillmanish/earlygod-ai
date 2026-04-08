@@ -1,0 +1,26 @@
+{
+  "gameTitle": "Age of Empires IV",
+  "screenRegions": {
+    "food": { "x": 100, "y": 20, "width": 80, "height": 25, "type": "number" },
+    "wood": { "x": 200, "y": 20, "width": 80, "height": 25, "type": "number" },
+    "gold": { "x": 300, "y": 20, "width": 80, "height": 25, "type": "number" },
+    "stone": { "x": 400, "y": 20, "width": 80, "height": 25, "type": "number" },
+    "population": { "x": 500, "y": 20, "width": 80, "height": 25, "type": "fraction" },
+    "age": { "x": 50, "y": 50, "width": 120, "height": 30, "type": "text" }
+  },
+  "eventKeywords": {
+    "build_order": ["build order", "opening", "fast castle", "feudal rush", "dark age", "castle age", "imperial age", "boom", "build"],
+    "unit": ["knight", "archer", "spearman", "siege", "cavalry", "crossbow", "horseman", "man at arms", "longbow", "producing", "training", "making"],
+    "building": ["town center", "barracks", "stable", "archery range", "siege workshop", "blacksmith", "market", "monastery", "built", "building", "constructing"],
+    "strategy": ["rush", "boom", "turtle", "timing attack", "all in", "harass", "raid", "defend", "push", "strategy"],
+    "civilization": ["english", "french", "mongols", "chinese", "rus", "holy roman empire", "delhi sultanate", "abbasid", "playing as", "using"],
+    "resource": ["food", "wood", "gold", "stone", "gathering", "collecting", "farming", "mining", "need", "low on"]
+  },
+  "entityPatterns": {
+    "unit_name": "(?:producing|training|making|building) ([a-z]+(?: [a-z]+)*)",
+    "building_name": "(?:built|building|constructing) ([a-z]+(?: [a-z]+)*)",
+    "civilization_name": "(?:playing as|using) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "resource_amount": "(?:food|wood|gold|stone) (\\d+)"
+  }
+}
+

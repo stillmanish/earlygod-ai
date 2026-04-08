@@ -1,0 +1,139 @@
+{
+  "name": "earlygod-overlay",
+  "version": "1.1.0",
+  "description": "EarlyGod.ai - Real-time gaming guide overlay application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "set ELECTRON_IS_DEV=true && electron .",
+    "build": "electron-builder",
+    "build:production": "electron-builder --win nsis --publish never",
+    "build:production-publish": "electron-builder --win nsis --publish always",
+    "build:unsigned": "set CSC_IDENTITY_AUTO_DISCOVERY=false && electron-builder --win nsis --publish never",
+    "publish:prepare": "node \"../For Distribution/scripts/copy-build-files.js\"",
+    "build:and-copy": "npm run build:production && npm run publish:prepare",
+    "build:beta": "electron-builder --win portable --publish never",
+    "package:beta": "npm run build:beta && npm run zip:beta",
+    "zip:beta": "cd dist && powershell Compress-Archive -Path 'EarlyGod.ai*.exe' -DestinationPath 'EarlyGod-ai-Beta-v1.0.0.zip' -Force",
+    "clean": "rmdir /s /q dist 2>nul || rm -rf dist",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gaming",
+    "ai",
+    "overlay",
+    "guides",
+    "electron"
+  ],
+  "author": "EarlyGod.ai",
+  "license": "ISC",
+  "dependencies": {
+    "active-win": "^7.7.2",
+    "electron-log": "^5.4.3",
+    "electron-store": "^11.0.2",
+    "electron-updater": "^6.6.2",
+    "lucide": "^0.544.0",
+    "node-window-manager": "^2.2.4",
+    "openai": "^5.23.0",
+    "screenshot-desktop": "^1.15.0",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "electron": "^41.1.1",
+    "electron-builder": "^26.8.1",
+    "to-ico": "^1.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/avirum-llc/EarlyGodAI-Beta-External.git"
+  },
+  "build": {
+    "appId": "ai.earlygod.app",
+    "productName": "EarlyGod.ai",
+    "copyright": "Copyright © 2025 EarlyGod.ai",
+    "protocols": {
+      "name": "EarlyGodAI",
+      "schemes": [
+        "earlygodai"
+      ]
+    },
+    "directories": {
+      "output": "dist"
+    },
+    "asarUnpack": [
+      "node_modules/electron-updater/**/*",
+      "node_modules/electron-log/**/*",
+      "node_modules/node-window-manager/**/*",
+      "node_modules/sharp/**/*"
+    ],
+    "files": [
+      "**/*",
+      "node_modules/electron-updater/**/*",
+      "game-primers/**/*",
+      "assets/**/*",
+      "BETA-README.txt",
+      "!dist/**/*",
+      "!*.log",
+      "!*.tmp",
+      "!generate-*.js",
+      "!create-*.js"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/icon.ico",
+      "publisherName": "EarlyGod.ai",
+      "verifyUpdateCodeSignature": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "allowElevation": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "EarlyGod.ai",
+      "artifactName": "EarlyGod.ai-Setup-${version}.exe",
+      "deleteAppDataOnUninstall": false,
+      "installerIcon": "assets/icon.ico",
+      "uninstallerIcon": "assets/icon.ico",
+      "installerHeader": "assets/icon.ico",
+      "installerHeaderIcon": "assets/icon.ico",
+      "warningsAsErrors": false,
+      "displayLanguageSelector": false,
+      "perMachine": false,
+      "runAfterFinish": false,
+      "menuCategory": false,
+      "license": "BETA-LICENSE.txt"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "avirum-llc",
+      "repo": "EarlyGodAI-Beta-External",
+      "releaseType": "release"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.games"
+    },
+    "linux": {
+      "target": "AppImage",
+      "icon": "assets/icon.png"
+    },
+    "extraResources": [
+      {
+        "from": "game-primers",
+        "to": "game-primers",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  }
+}

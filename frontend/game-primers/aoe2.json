@@ -1,0 +1,78 @@
+{
+  "gameTitle": "Age of Empires II: Definitive Edition",
+  "genre": "Real-Time Strategy",
+  "developer": "Forgotten Empires / Microsoft",
+  "releaseDate": "1999 (Original), 2019 (Definitive Edition)",
+  "platforms": ["PC", "Xbox"],
+  
+  "overview": "Classic RTS covering medieval history with 42 civilizations, 4 ages of progression, and competitive multiplayer. Players gather resources, build armies, and defeat opponents through military, economic, or wonder victory.",
+  
+  "coreMechanics": [
+    "Four ages: Dark, Feudal, Castle, Imperial",
+    "Four resources: Food, Wood, Gold, Stone",
+    "Villager economy management (TC production)",
+    "Unit counter system (rock-paper-scissors balance)",
+    "Civilization bonuses and unique units",
+    "Castle and Wonder construction",
+    "Technology research trees",
+    "Wall and defensive structure placement"
+  ],
+  
+  "terminology": {
+    "TC": "Town Center - produces villagers, age up point",
+    "Vils": "Villagers - worker units gathering resources",
+    "FC": "Fast Castle - rushing to Castle Age quickly",
+    "Boom": "Economic focus - mass villager production",
+    "Rush": "Early military aggression (Drush, Flush, Scout rush)",
+    "Drush": "Dark Age militia rush",
+    "Flush": "Feudal Age archer rush",
+    "Xbow": "Crossbowman unit",
+    "Mangudai": "Mongol unique unit",
+    "Longbow": "British unique unit",
+    "Treb": "Trebuchet siege weapon",
+    "Onager": "Siege unit effective vs infantry",
+    "Monk": "Religious unit that converts enemies",
+    "Relic": "Collectible providing gold income",
+    "Laming": "Stealing enemy resources early",
+    "Walling": "Defensive structure placement",
+    "Hotkey": "Keyboard shortcuts for faster play",
+    "APM": "Actions per minute"
+  },
+  
+  "commonQuestions": [
+    "Which civilization should I play?",
+    "What's a good build order?",
+    "How many villagers on each resource?",
+    "When should I age up?",
+    "What counters archers/cavalry/infantry?",
+    "How do I defend against a rush?",
+    "What are the best hotkeys?",
+    "How do I improve my economy?"
+  ],
+  
+  "insiderTips": [
+    "Constant villager production is #1 priority - never stop making vils from TC",
+    "General ratio: 6 sheep, 4 wood, 1-2 boar, then flexible",
+    "Learn one solid build order before experimenting",
+    "Archers beat infantry, cavalry beats archers, infantry beats cavalry",
+    "Monks can convert any unit - protect them or kill them first",
+    "Always be researching something - idle time = wasted resources",
+    "Scout enemy in Dark/Feudal age - information wins games",
+    "Stone walls are expensive - use palisade walls early"
+  ],
+  
+  "progressionSystem": {
+    "ages": "Dark → Feudal (500F/200W) → Castle (800F/200G) → Imperial (1000F/800G)",
+    "economy": "Scale from 20 vils (Feudal) to 60+ (Castle) to 100+ (Imperial)",
+    "military": "Unlock stronger units and upgrades each age",
+    "technology": "Blacksmith, University, Monastery upgrades"
+  },
+  
+  "topCivilizations": {
+    "beginnerFriendly": ["Britons", "Byzantines", "Vikings"],
+    "competitive": ["Mayans", "Aztecs", "Chinese", "Mongols"],
+    "unique": ["Goths (spam infantry)", "Turks (gunpowder)", "Koreans (turtle)"]
+  },
+  
+  "estimatedPlaytime": "15-45 minutes per match, endless replayability"
+}

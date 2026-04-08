@@ -1,0 +1,73 @@
+{
+  "gameTitle": "Ghost of Tsushima",
+  "genre": "Open-world Action-Adventure",
+  "developer": "Sucker Punch Productions",
+  "releaseDate": "2020-07-17",
+  "platforms": ["PS4", "PS5", "PC"],
+  
+  "overview": "Set in 1274 during the Mongol invasion of Tsushima Island, you play as Jin Sakai, a samurai who must abandon traditional honor to become the 'Ghost' and use unconventional tactics to save his homeland.",
+  
+  "coreMechanics": [
+    "Stance system (Stone, Water, Wind, Moon) - each effective against different enemy types",
+    "Perfect parry and dodge timing for combat advantage",
+    "Ghost weapons (kunai, smoke bombs, sticky bombs) for stealth",
+    "Guiding Wind navigation system (no mini-map)",
+    "Standoffs for honorable 1v1 duels",
+    "Resolve system (build by combat, spend on healing or special moves)",
+    "Samurai vs Ghost playstyle choice affects story perception"
+  ],
+  
+  "terminology": {
+    "Jin Sakai": "The main protagonist, samurai of Clan Sakai",
+    "The Ghost": "Jin's alter ego using stealth and fear tactics",
+    "Resolve": "Resource for healing and powerful techniques",
+    "Stance": "Combat style - switch based on enemy weapon type",
+    "Standoff": "Honorable duel initiated before combat",
+    "Guiding Wind": "Environmental navigation system pointing to objectives",
+    "Legend": "Jin's reputation level affecting unlock progression",
+    "Technique Points": "Currency for upgrading abilities",
+    "Mongols": "Primary enemy faction invading Tsushima",
+    "Sakai Clan": "Jin's family lineage",
+    "Sensei": "NPCs who teach special techniques",
+    "Haiku": "Poetry spots that unlock cosmetics",
+    "Hot Springs": "Locations that increase max health",
+    "Bamboo Strike": "Timed button sequence for resolve upgrade"
+  },
+  
+  "commonQuestions": [
+    "Which stance should I use against this enemy?",
+    "How do I increase my health?",
+    "What's the difference between samurai and ghost playstyle?",
+    "Where do I find technique points?",
+    "How does the guiding wind work?",
+    "Should I do standoffs or stealth kills?",
+    "How do I unlock new sword techniques?"
+  ],
+  
+  "insiderTips": [
+    "Stone stance for swordsmen, Water for shields, Wind for spears, Moon for brutes",
+    "Perfect parry timing is slightly earlier than you expect - watch enemy shoulders, not weapon",
+    "Stealth kills don't reduce honor or affect story - play how you want",
+    "Visit hot springs for max health upgrades - essential for boss fights",
+    "Bamboo strikes permanently increase resolve capacity - prioritize these",
+    "Guiding wind can target multiple waypoints - use touchpad to cycle",
+    "Standoffs can chain multiple kills if timed perfectly - wait for glint"
+  ],
+  
+  "progressionSystem": {
+    "primary": "Legend rank (reputation gained from activities)",
+    "combatUpgrades": "Technique points from missions and exploration",
+    "health": "Hot springs (max health increase)",
+    "resolve": "Bamboo strikes (max resolve increase)",
+    "gear": "Armor and charms from vendors and exploration",
+    "weapons": "Unlock ghost weapons from specific quests"
+  },
+  
+  "combatTypes": {
+    "honorable": "Standoffs, open combat, samurai techniques",
+    "ghost": "Stealth assassinations, ghost weapons, fear tactics",
+    "hybrid": "Most players mix both styles"
+  },
+  
+  "estimatedPlaytime": "20-30 hours main story, 50+ hours completionist"
+}

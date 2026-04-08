@@ -1,0 +1,75 @@
+{
+  "gameTitle": "Elden Ring: Shadow of the Erdtree",
+  "genre": "Souls-like Action RPG DLC",
+  "developer": "FromSoftware",
+  "releaseDate": "2024-06-21",
+  "platforms": ["PC", "PS4", "PS5", "Xbox One", "Xbox Series X/S"],
+  
+  "overview": "Massive DLC expansion set in the Land of Shadow, accessible via Mohg's arena. Features entirely new map, legacy dungeons, bosses, and the Scadutree Blessing progression system that scales power specifically for DLC content.",
+  
+  "coreMechanics": [
+    "Scadutree Blessing system (DLC-specific damage/defense scaling)",
+    "Revered Spirit Ash upgrades (enhanced spirit summons)",
+    "New weapon types and Ashes of War",
+    "Torrent traversal in vertical Legacy Dungeons",
+    "Cross-map elevation changes and underground areas",
+    "Enhanced guard counter mechanics",
+    "New status effects and damage types"
+  ],
+  
+  "terminology": {
+    "Scadutree Fragment": "Primary collectible - increases Scadutree Blessing",
+    "Scadutree Blessing": "DLC power level (more important than character level)",
+    "Revered Spirit Ash": "DLC upgrade material for Spirit Ashes",
+    "Shadow Realm": "The DLC's map area (Land of Shadow)",
+    "Miquella": "Central figure - demigod you're following",
+    "Furnace Golem": "Large walking furnace enemies patrolling areas",
+    "Gravesite Plain": "Starting area of DLC",
+    "Church of Consolation": "Early landmark with Scadutree Fragments",
+    "Messmer": "Major antagonist and late-game boss",
+    "Cross": "Map markers placed by Miquella showing his path",
+    "Shadow Keep": "Central legacy dungeon",
+    "Abyssal Woods": "Late-game stealth-focused area"
+  },
+  
+  "commonQuestions": [
+    "How do I access the DLC?",
+    "Where do I find Scadutree Fragments?",
+    "What level should I be for the DLC?",
+    "Why am I doing so little damage?",
+    "How do I upgrade Spirit Ashes in the DLC?",
+    "Where is the nearest Site of Grace?",
+    "Can I leave and come back to the DLC?",
+    "What are Revered Spirit Ashes for?"
+  ],
+  
+  "insiderTips": [
+    "Scadutree Blessing is MORE important than character level - prioritize fragments",
+    "DLC is balanced for Blessing 12-18, not character level 150",
+    "Many early Fragments are in Churches and ruins - explore thoroughly",
+    "Furnace Golems can be avoided entirely on Torrent - not mandatory",
+    "Revered Spirit Ashes make summons significantly stronger - huge power spike",
+    "Church of Consolation has 3 fragments nearby - excellent early boost",
+    "Base game level matters less - a level 100 with Blessing 15 > level 200 with Blessing 5",
+    "Most bosses are designed for Spirit Ash use - don't handicap yourself",
+    "Crosses on map show Miquella's path - follow for story progression"
+  ],
+  
+  "progressionSystem": {
+    "primary": "Scadutree Blessing (collect fragments)",
+    "spiritUpgrade": "Revered Spirit Ashes at Roundtable Hold",
+    "weaponUpgrade": "Same as base game (Smithing Stones)",
+    "characterLevel": "Less important than blessing level in DLC"
+  },
+  
+  "accessRequirement": "Must defeat Mohg, Lord of Blood AND Starscourge Radahn in base game. Interact with Miquella's cocoon in Mohg's arena.",
+  
+  "recommendedStats": {
+    "characterLevel": "125-150 minimum",
+    "vigor": "50-60",
+    "weaponLevel": "+24/+25 (or +9/+10 for somber)",
+    "scadutreeBlessing": "Aim for 10+ before major bosses"
+  },
+  
+  "estimatedPlaytime": "30-40 hours main content, 50+ completionist"
+}

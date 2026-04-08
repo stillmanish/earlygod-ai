@@ -1,0 +1,23 @@
+{
+  "gameTitle": "Age of Empires 2",
+  "screenRegions": {
+    "resources": { "x": 1600, "y": 50, "width": 250, "height": 100, "type": "text" },
+    "population": { "x": 1700, "y": 150, "width": 100, "height": 25, "type": "fraction" },
+    "age": { "x": 100, "y": 900, "width": 150, "height": 30, "type": "text" }
+  },
+  "eventKeywords": {
+    "civilization": ["britons", "franks", "teutons", "mongols", "chinese", "saracens", "vikings", "byzantines", "playing", "picked", "as"],
+    "age": ["dark age", "feudal", "castle", "imperial", "advanced", "reached"],
+    "unit": ["knight", "archer", "crossbow", "mangudai", "chu ko nu", "longbow", "cataphract", "trained", "created", "building"],
+    "building": ["town center", "castle", "monastery", "university", "market", "built", "constructed", "placed"],
+    "technology": ["ballistics", "chemistry", "bloodlines", "husbandry", "researched", "unlocked"],
+    "battle": ["won battle", "lost battle", "raided", "defended", "attacked"],
+    "economy": ["boom", "villagers", "gathering", "farming", "mining"],
+    "game": ["won", "lost", "resigned", "gg"]
+  },
+  "entityPatterns": {
+    "civilization_name": "(?:playing|as|picked) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "unit_name": "(?:trained|created|building) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "tech_name": "(?:researched|unlocked) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)"
+  }
+}

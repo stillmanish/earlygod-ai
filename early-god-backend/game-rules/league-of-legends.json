@@ -1,0 +1,23 @@
+{
+  "gameTitle": "League of Legends",
+  "screenRegions": {
+    "gold": { "x": 1700, "y": 900, "width": 100, "height": 25, "type": "number" },
+    "level": { "x": 50, "y": 850, "width": 50, "height": 25, "type": "number" },
+    "kda": { "x": 1600, "y": 50, "width": 150, "height": 30, "type": "text" }
+  },
+  "eventKeywords": {
+    "champion": ["ahri", "yasuo", "zed", "lux", "jinx", "thresh", "lee sin", "vayne", "picked", "playing", "main", "using"],
+    "objective": ["baron", "dragon", "elder", "herald", "tower", "inhibitor", "nexus", "took", "secured", "killed", "destroyed"],
+    "item": ["mythic", "infinity edge", "rabadon", "thornmail", "guardian angel", "bought", "completed", "building"],
+    "kill": ["kill", "double kill", "triple kill", "quadra", "penta", "got", "scored"],
+    "death": ["died", "killed by", "death"],
+    "lane": ["top", "jungle", "mid", "adc", "support", "playing", "going", "assigned"],
+    "teamfight": ["won teamfight", "lost teamfight", "ace", "aced"],
+    "game": ["won", "lost", "victory", "defeat", "surrender", "ff"]
+  },
+  "entityPatterns": {
+    "champion_name": "(?:playing|picked|using|main) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "item_name": "(?:bought|completed|building) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "objective_name": "(?:took|killed|secured) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)"
+  }
+}

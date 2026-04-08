@@ -1,0 +1,76 @@
+{
+  "gameTitle": "Crimson Desert",
+  "genre": "Open World Action RPG",
+  "developer": "Pearl Abyss",
+  "releaseDate": "2025-03-18",
+  "platforms": ["PC", "PS5", "Xbox Series X/S"],
+
+  "overview": "Open world action RPG following Kliff and the Greymanes mercenary band across the continent of Pywel. Features deep melee combat with parrying, grappling, mounted combat, and multiple playable characters. Known for massive boss fights including mountable colossal creatures, aerial dragon chases, and a blend of swordplay with wrestling moves.",
+
+  "coreMechanics": [
+    "Parry and Guard Break system — parry depletes boss Guard bar, opening damage windows",
+    "Grappling and wrestling moves — lariat, body slam, dropkick, throws",
+    "Weapon swapping between one-handed, two-handed, and ranged",
+    "Elemental imbuing — lightning, frost, storm, flame",
+    "Dragon mount for aerial combat and traversal",
+    "Mountable bosses — climb colossal enemies and attack weak points",
+    "Abyss Artifact progression — spend to unlock skills and boost stats",
+    "Meat-based healing — heal while attacking with quick moves",
+    "Multiple playable characters — Kliff, Damiane, Oongka with unique skill trees",
+    "Bell system — ring 8 hidden bells to reveal the full map"
+  ],
+
+  "terminology": {
+    "Kliff": "Main protagonist, leader of the Greymanes",
+    "Greymanes": "Kliff's mercenary band, the central group",
+    "Damiane": "Playable Greymane member, shield/sword specialist",
+    "Oongka": "Playable Greymane member, berserker with rage abilities",
+    "Pywel": "The continent where the game takes place",
+    "Abyss Artifact": "Currency for unlocking skills and upgrading stats",
+    "Abyss Gear": "Special modifiers on unique weapons",
+    "Guard Bar": "Boss defense meter — deplete it to stagger them",
+    "Parry": "Block right before impact to interrupt attacks and drain Guard",
+    "Spirit": "Resource stat for special abilities",
+    "Bells": "8 hidden bells that reveal map regions when rung"
+  },
+
+  "commonQuestions": [
+    "How does the parry system work?",
+    "How do I break a boss's Guard bar?",
+    "How do I mount and climb bosses?",
+    "Where are the 8 map bells?",
+    "What are Abyss Artifacts and how do I spend them?",
+    "How do I switch between characters?",
+    "What's the best weapon type for this boss?",
+    "How do grappling moves work?",
+    "How do I heal during combat?",
+    "Where do I find unique weapons?"
+  ],
+
+  "insiderTips": [
+    "Parrying is the fastest way to break boss Guard — prioritize learning timing",
+    "Stock up on meat before boss fights — you WILL take damage",
+    "Heal while attacking with quick attacks, don't stop to heal at low HP",
+    "Some bosses can be mounted — look for climbing prompts on large creatures",
+    "Grappling moves deal high stagger damage and work on humanoid bosses",
+    "Ring bells early — they reveal the map and nearby points of interest",
+    "Unique weapons from treasure chests come with Abyss Gears pre-equipped",
+    "Ranged weapons are useful for aerial encounters and weak point targeting",
+    "Elemental imbuing adds extra damage — match element to boss weakness",
+    "Faction quests give bag rewards — check the faction menu for specifics"
+  ],
+
+  "progressionSystem": {
+    "primary": "Abyss Artifacts spent on skill trees (Stamina, Health, Spirit stats)",
+    "equipment": "Weapons from shops, loot, chests. Unique weapons from quests/treasures",
+    "skills": "Per-character skill trees — combat, grappling, elemental, utility",
+    "exploration": "8 bells reveal map, discover fast travel points and hidden areas"
+  },
+
+  "startingAreas": [
+    "Hernand",
+    "Tommaso"
+  ],
+
+  "estimatedPlaytime": "30-50 hours for main story, 60+ for completionist"
+}

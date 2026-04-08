@@ -1,0 +1,75 @@
+{
+  "gameTitle": "Age of Empires IV",
+  "genre": "Real-Time Strategy",
+  "developer": "Relic Entertainment / World's Edge",
+  "releaseDate": "2021-10-28",
+  "platforms": ["PC", "Xbox Series X/S"],
+  
+  "overview": "Modern RTS with historical civilizations from medieval to Renaissance periods. Features updated mechanics from AoE2 with asymmetric civilization design, improved visuals, and competitive multiplayer focus.",
+  
+  "coreMechanics": [
+    "Four ages with unique landmarks per civilization",
+    "Asymmetric civilization design (unique mechanics)",
+    "Four resources: Food, Wood, Gold, Stone",
+    "Influence zones from buildings",
+    "Sacred Sites for religious victory",
+    "Campaign missions with documentary videos",
+    "Naval warfare and trade routes",
+    "Siege weapons and wall destruction"
+  ],
+  
+  "terminology": {
+    "Landmark": "Unique building required to advance ages",
+    "Influence": "Area of effect from buildings (e.g., keeps)",
+    "Sacred Site": "Capturable points for religious victory",
+    "Villager": "Worker unit gathering resources",
+    "Scout": "Early exploration unit",
+    "MAA": "Man-at-Arms - core infantry",
+    "Archer": "Ranged unit",
+    "Horseman": "Light cavalry",
+    "Knight": "Heavy cavalry",
+    "Springald": "Siege unit effective vs other siege",
+    "Trebuchet": "Long-range siege for buildings",
+    "Age Up": "Advancing to next age via landmark",
+    "Boom": "Economic focus strategy",
+    "Rush": "Early military aggression",
+    "Turtle": "Defensive playstyle"
+  },
+  
+  "commonQuestions": [
+    "Which civilization is best for beginners?",
+    "How do I age up efficiently?",
+    "What's a good opening build order?",
+    "How do I counter cavalry/archers/siege?",
+    "When should I build military buildings?",
+    "How do sacred sites work?",
+    "Should I upgrade or make more units?",
+    "How do I defend against early aggression?"
+  ],
+  
+  "insiderTips": [
+    "Don't float resources - always be spending",
+    "Scout enemy continuously - knowledge is power",
+    "Most civs want 14-16 vils on food in Dark Age",
+    "Always be producing villagers until ~60-80 (even when fighting)",
+    "Counter units are crucial - don't mass one unit type",
+    "Sacred Sites give 100 gold/sec per site - huge economic boost",
+    "Springalds are siege killers - protect your siege with them",
+    "Keep production buildings rallied to front line"
+  ],
+  
+  "progressionSystem": {
+    "ages": "Dark → Feudal (landmark) → Castle (landmark) → Imperial (landmark)",
+    "landmarks": "Each civ has 2 options per age with different bonuses",
+    "economy": "Scale villager production throughout game",
+    "military": "Unlock new units and upgrades each age"
+  },
+  
+  "civilizations": {
+    "beginnerFriendly": ["English", "French", "Mongols"],
+    "unique": ["Mongols (mobile buildings)", "Delhi (free upgrades over time)", "Rus (hunting focus)"],
+    "competitive": ["French", "English", "Mongols", "HRE"]
+  },
+  
+  "estimatedPlaytime": "20-40 minutes per match, campaign 10-15 hours per civ"
+}

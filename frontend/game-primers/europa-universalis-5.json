@@ -1,0 +1,97 @@
+{
+  "gameTitle": "Europa Universalis V",
+  "genre": "Grand Strategy",
+  "developer": "Paradox Development Studio",
+  "releaseDate": "TBA (Expected 2025-2026)",
+  "platforms": ["PC"],
+  
+  "overview": "Epic grand strategy game covering 400 years of history from 1444 to 1821. Lead any nation through diplomacy, trade, warfare, and colonization. Build an empire through careful management of economy, military, technology, and international relations.",
+  
+  "coreMechanics": [
+    "Real-time with pause gameplay",
+    "Dynamic diplomacy and alliance systems",
+    "Trade nodes and mercantilism",
+    "Military unit composition and tactics",
+    "Technology groups and institutions",
+    "Colonial expansion and colonization",
+    "Religious mechanics and reformation",
+    "Province development and buildings",
+    "Monarch power (Admin, Diplomatic, Military)",
+    "Aggressive Expansion and coalition management"
+  ],
+  
+  "terminology": {
+    "MP": "Monarch Power - Admin/Diplomatic/Military points",
+    "AE": "Aggressive Expansion - penalty for conquest",
+    "Coalition": "Alliance of nations against aggressive player",
+    "CB": "Casus Belli - valid reason for war",
+    "WS": "Warscore - measure of war progress",
+    "Dev": "Development - province value (tax/production/manpower)",
+    "HRE": "Holy Roman Empire - central European coalition",
+    "PU": "Personal Union - dynastic control over another nation",
+    "Ducats": "Gold currency for trade and economy",
+    "Manpower": "Military recruitment pool",
+    "Ideas": "National focus trees for bonuses",
+    "Institutions": "Technological advancement spreads",
+    "Unrest": "Province rebellion risk",
+    "Autonomy": "Local self-governance reducing income",
+    "Trade Node": "Regional trade collection point",
+    "Liberty Desire": "Vassal independence tendency",
+    "Call to Arms": "Request ally join your war",
+    "Separate Peace": "Individual treaty in coalition war",
+    "Revanchism": "Temporary power boost after losing territory"
+  },
+  
+  "commonQuestions": [
+    "Which nation should I start with?",
+    "How do I manage monarch power efficiently?",
+    "What's a good opening strategy?",
+    "How do I avoid coalitions?",
+    "What ideas should I take first?",
+    "How do I win wars efficiently?",
+    "How do I develop my economy?",
+    "When should I colonize?",
+    "How do I deal with rebels?",
+    "What's the best way to expand?"
+  ],
+  
+  "insiderTips": [
+    "Always keep a diplomatic reputation advisor - prevents coalition wars",
+    "Improve relations with outraged nations to prevent coalitions from forming",
+    "Develop provinces in your capital state area first for maximum efficiency",
+    "Take Influence ideas early if you plan to vassalize nations",
+    "Never fight a war without a clear war goal - WS efficiency matters",
+    "Check coalition map mode before declaring war to see who might join against you",
+    "Use vassals to feed them land and avoid AE on yourself",
+    "Tech up military tech levels 5, 11, 15, and 21 ASAP - major power spikes",
+    "Always be at war somewhere - idle armies cost money and waste opportunities",
+    "Balance expansion with consolidation - don't overextend too fast",
+    "Keep 1-2 Military Power banked for generals and emergencies",
+    "Use claims fabrication to reduce AE and core cost",
+    "Monitor trade nodes - shifting trade power is often better than collecting"
+  ],
+  
+  "progressionSystem": {
+    "startingPower": "Choose any nation from 1444 start date",
+    "earlyGame": "Consolidate regional power, establish economy (1444-1500)",
+    "midGame": "Colonial expansion, institutional spread, major wars (1500-1650)",
+    "lateGame": "Great Power competition, global dominance (1650-1821)",
+    "goalTypes": "Custom goals, achievements, score ranking, or role-play"
+  },
+  
+  "topNations": {
+    "beginnerFriendly": ["Castile (Spain)", "Ottomans", "France", "Portugal"],
+    "intermediate": ["Brandenburg (Prussia)", "England", "Austria", "Muscovy (Russia)"],
+    "advanced": ["Byzantium (restoration)", "Albania", "Ryukyu (world conquest)", "Granada"],
+    "unique": ["Ottomans (blobbing)", "Portugal (colonizer)", "Austria (HRE emperor)", "Venice (trade republic)"]
+  },
+  
+  "ideaGroups": {
+    "administrative": "Religious, Economic, Expansion, Administrative",
+    "diplomatic": "Influence, Diplomatic, Espionage, Trade",
+    "military": "Quality, Quantity, Offensive, Defensive, Aristocratic, Naval, Maritime"
+  },
+  
+  "estimatedPlaytime": "Single campaign: 20-100+ hours, endless replayability with different nations"
+}
+

@@ -1,0 +1,62 @@
+{
+  "gameTitle": "League of Legends",
+  "genre": "Multiplayer Online Battle Arena (MOBA)",
+  "developer": "Riot Games",
+  "releaseDate": "2009",
+  "platforms": ["PC", "Mac"],
+  
+  "overview": "The world's most popular MOBA game where two teams of five champions battle to destroy the enemy's Nexus. Features strategic gameplay, skill-based combat, and hundreds of unique champions.",
+  
+  "coreMechanics": [
+    "5v5 team-based strategic combat",
+    "Champion selection and role specialization",
+    "Lane phase, jungle, and team fighting",
+    "Item builds and gold economy",
+    "Objective control (Dragons, Baron, Towers)",
+    "Last-hitting minions for gold and experience",
+    "Map awareness and vision control with wards"
+  ],
+  
+  "terminology": {
+    "CS": "Creep Score - number of minions/monsters killed for gold",
+    "Gank": "Surprise attack on an enemy, usually by the jungler",
+    "ADC": "Attack Damage Carry - the main damage dealer (bot lane)",
+    "Support": "Player who assists the ADC and provides utility",
+    "Jungler": "Player who farms jungle monsters and ganks lanes",
+    "Baron": "Powerful neutral monster that grants team-wide buff",
+    "Dragon": "Neutral monsters that provide permanent team benefits",
+    "Wards": "Items that provide vision on the map",
+    "Recall": "Teleport back to base to heal and buy items",
+    "Roam": "Leave your lane to help teammates in other areas"
+  },
+  
+  "commonQuestions": [
+    "Which champion should I play?",
+    "How do I farm better?",
+    "When should we take Baron?",
+    "What items should I build?",
+    "How do I improve my map awareness?",
+    "What's the current meta?",
+    "How do I ward effectively?",
+    "When should I roam?"
+  ],
+  
+  "insiderTips": [
+    "Focus on last-hitting minions over trading with enemies early game",
+    "Always buy a Control Ward on your first back",
+    "Watch the minimap every 3-5 seconds",
+    "Don't chase kills into unwarded areas",
+    "Group with your team after laning phase ends",
+    "Farm jungle camps when lanes are pushed",
+    "Learn to freeze minion waves near your tower",
+    "Play around your team's power spikes"
+  ],
+  
+  "roles": {
+    "Top": "Solo lane fighter, usually tanky or bruiser champions",
+    "Jungle": "Farms jungle monsters, ganks lanes, controls objectives",
+    "Mid": "Solo lane mage or assassin, high damage output",
+    "ADC": "Bot lane carry, scales with items, primary damage dealer",
+    "Support": "Bot lane utility, vision control, protects ADC"
+  }
+}

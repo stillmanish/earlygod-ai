@@ -1,0 +1,69 @@
+{
+  "gameTitle": "Clair Obscur: Expedition 33",
+  "genre": "Survival Horror / Extraction",
+  "developer": "Grimoire Assembly Forge",
+  "releaseDate": "TBA 2025",
+  "platforms": ["PC"],
+  
+  "overview": "Survival horror extraction game set in the Carpathian Mountains. Players explore a mysterious zone filled with supernatural threats, scavenging resources while managing sanity and survival needs.",
+  
+  "coreMechanics": [
+    "Extraction-based gameplay (get in, loot, get out)",
+    "Sanity management system",
+    "Resource scarcity and inventory management",
+    "Dynamic threat AI responding to player behavior",
+    "Time pressure mechanics",
+    "Permanent death with partial item recovery",
+    "Solo and co-op multiplayer options"
+  ],
+  
+  "terminology": {
+    "Expedition": "A single run into the zone",
+    "Extraction Point": "Safe zones to exit with your loot",
+    "Sanity": "Mental health stat affecting perception",
+    "The Zone": "Dangerous area being explored",
+    "Anomaly": "Supernatural threat or hazard",
+    "Stash": "Safe storage for extracted items",
+    "Run": "Individual expedition attempt",
+    "Artifacts": "Valuable collectibles to extract",
+    "Contact": "Communication with base/other players",
+    "Blowout": "Dangerous zone-wide event"
+  },
+  
+  "commonQuestions": [
+    "How do I extract safely?",
+    "What happens if I die?",
+    "How does sanity work?",
+    "Should I go solo or with a team?",
+    "What items should I prioritize?",
+    "How do I manage my inventory?",
+    "Can I recover my gear after death?",
+    "What are anomalies?"
+  ],
+  
+  "insiderTips": [
+    "Don't get greedy - extract before sanity hits critical",
+    "Sound discipline is crucial - entities track noise",
+    "Mark extraction points early in your run",
+    "Light sources attract threats but are necessary",
+    "Insure valuable gear before risky expeditions",
+    "Weather affects visibility and enemy behavior",
+    "Group up with other players for better survival odds"
+  ],
+  
+  "progressionSystem": {
+    "primary": "Extracted loot and unlocked equipment",
+    "metaProgression": "Unlocked loadout options and base upgrades",
+    "knowledge": "Learning enemy patterns and zone layout",
+    "reputation": "Standing with different factions"
+  },
+  
+  "survivalTips": {
+    "sanity": "Rest in safe areas, avoid looking at anomalies",
+    "inventory": "Prioritize high-value, low-weight items",
+    "threats": "Learn escape routes, don't engage unless necessary",
+    "extraction": "Know multiple exit points, don't rely on one"
+  },
+  
+  "estimatedPlaytime": "Ongoing - extraction game loop, 20-60 minutes per run"
+}

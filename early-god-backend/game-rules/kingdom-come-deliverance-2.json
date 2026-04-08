@@ -1,0 +1,24 @@
+{
+  "gameTitle": "Kingdom Come: Deliverance 2",
+  "screenRegions": {
+    "health": { "x": 50, "y": 50, "width": 150, "height": 20, "type": "bar_percentage" },
+    "stamina": { "x": 50, "y": 75, "width": 150, "height": 20, "type": "bar_percentage" },
+    "location": { "x": 100, "y": 900, "width": 250, "height": 30, "type": "text" }
+  },
+  "eventKeywords": {
+    "boss": ["bandit leader", "cuman", "captain", "lord", "defeated", "killed", "beat", "won fight"],
+    "location": ["kuttenberg", "trosky", "rattay", "talmberg", "monastery", "reached", "arrived at", "traveled to"],
+    "quest": ["main quest", "side quest", "hans", "radzig", "theresa", "started", "completed", "finished"],
+    "weapon": ["sword", "mace", "axe", "bow", "longsword", "warhammer", "obtained", "bought", "equipped"],
+    "armor": ["helmet", "cuirass", "gauntlets", "plate armor", "chainmail", "wearing", "equipped", "bought"],
+    "skill": ["strength", "agility", "vitality", "speech", "charisma", "leveled", "improved", "trained"],
+    "item": ["bandage", "potion", "herb", "saviour schnapps", "lockpick", "found", "bought", "need"],
+    "progress": ["level", "reputation", "honor", "increased", "gained"]
+  },
+  "entityPatterns": {
+    "boss_name": "(?:defeated|killed|beat) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "location_name": "(?:in|at|reached|arrived at) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "item_name": "(?:got|found|bought|obtained) (?:a |the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "level_number": "(?:level|lvl) (\\d+)"
+  }
+}

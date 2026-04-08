@@ -1,0 +1,35 @@
+{
+  "game_mappings": {
+    "GhostOfTsushima.exe": "ghost-of-tsushima.json",
+    "GhostOfYotei.exe": "ghost-of-yotei.json", 
+    "eldenring.exe": "elden-ring.json",
+    "Expedition33.exe": "expedition-33.json",
+    "AoE2DE_s.exe": "aoe2.json",
+    "AoE2DE.exe": "aoe2.json",
+    "RelicCardinal.exe": "aoe4.json",
+    "KCD2.exe": "kingdom-come-2.json",
+    "b1.exe": "black-myth-wukong.json",
+    "BlackMythWukong.exe": "black-myth-wukong.json",
+    "League of Legends.exe": "league-of-legends.json",
+    "LeagueClient.exe": "league-of-legends.json",
+    "eu5.exe": "europa-universalis-5.json",
+    "EuropaUniversalis5.exe": "europa-universalis-5.json",
+    "CrimsonDesert.exe": "crimson-desert.json"
+  },
+  "display_names": {
+    "Ghost of Tsushima": "ghost-of-tsushima.json",
+    "Ghost of Yotei": "ghost-of-yotei.json",
+    "Elden Ring": "elden-ring.json",
+    "Elden Ring Shadow of Erdtree": "elden-ring-sotd.json",
+    "Clair Obscur: Expedition 33": "expedition-33.json",
+    "Age of Empires 2": "aoe2.json",
+    "Age of Empires 4": "aoe4.json",
+    "Kingdom Come Deliverance 2": "kingdom-come-2.json",
+    "Black Myth Wukong": "black-myth-wukong.json",
+    "League of Legends": "league-of-legends.json",
+    "Europa Universalis V": "europa-universalis-5.json",
+    "Crimson Desert": "crimson-desert.json"
+  },
+  "version": "1.0.1",
+  "updated": "2025-11-27"
+}

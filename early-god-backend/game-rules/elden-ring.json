@@ -1,0 +1,25 @@
+{
+  "gameTitle": "Elden Ring",
+  "screenRegions": {
+    "level": { "x": 50, "y": 50, "width": 100, "height": 30, "type": "number" },
+    "location": { "x": 100, "y": 900, "width": 300, "height": 40, "type": "text" },
+    "health": { "x": 50, "y": 800, "width": 200, "height": 20, "type": "bar_percentage" },
+    "runes": { "x": 1700, "y": 50, "width": 150, "height": 30, "type": "number" }
+  },
+  "eventKeywords": {
+    "boss": ["margit", "godrick", "radahn", "malenia", "mohg", "rennala", "morgott", "godfrey", "maliketh", "placidusax", "beat", "defeated", "killed", "boss down", "finally got"],
+    "location": ["limgrave", "liurnia", "caelid", "leyndell", "mountaintops", "haligtree", "farum azula", "siofra", "ainsel", "reached", "arrived", "made it to", "now in"],
+    "quest": ["ranni", "fia", "alexander", "nepheli", "blaidd", "rogier", "sellen", "millicent", "quest", "questline", "started", "completed", "finished"],
+    "weapon": ["greatsword", "katana", "staff", "seal", "moonveil", "rivers of blood", "blasphemous blade", "sword of night and flame", "got", "found", "equipped", "using"],
+    "armor": ["armor", "helmet", "gauntlets", "greaves", "set", "radahn", "malenia", "tree sentinel", "wearing", "equipped"],
+    "build": ["strength", "dex", "int", "faith", "arcane", "vigor", "endurance", "mind", "build", "respec", "leveling", "stat"],
+    "item": ["smithing stone", "somber", "talisman", "flask", "tear", "golden seed", "sacred tear", "larval tear", "need", "missing", "looking for", "got", "found"]
+  },
+  "entityPatterns": {
+    "boss_name": "(?:beat|defeated|killed|fighting|finally got) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "location_name": "(?:in|at|reached|arrived at|made it to|now in) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "item_name": "(?:got|found|need|obtained|looking for) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "level_number": "(?:level|lvl) (\\d+)"
+  }
+}
+

@@ -1,0 +1,28 @@
+{
+  "gameTitle": "Clair Obscur: Expedition 33",
+  "screenRegions": {
+    "health": { "x": 50, "y": 50, "width": 150, "height": 30, "type": "bar_percentage" },
+    "stamina": { "x": 50, "y": 90, "width": 150, "height": 30, "type": "bar_percentage" },
+    "level": { "x": 1800, "y": 50, "width": 80, "height": 30, "type": "number" },
+    "floor": { "x": 1800, "y": 100, "width": 80, "height": 30, "type": "number" }
+  },
+  "eventKeywords": {
+    "boss": ["paintress", "monter", "boss", "defeated", "killed", "beat", "boss fight", "mini boss", "elite", "champion", "finally got"],
+    "floor": ["floor", "level", "expedition", "reached", "made it to", "cleared", "completed", "descended to"],
+    "character": ["gustave", "maelle", "lune", "sciel", "recruited", "unlocked", "playing as", "switched to"],
+    "weapon": ["weapon", "sword", "axe", "bow", "staff", "gun", "rifle", "pistol", "found", "got", "equipped", "using", "upgraded"],
+    "armor": ["armor", "helmet", "chest", "legs", "boots", "shield", "outfit", "found", "got", "equipped", "wearing"],
+    "skill": ["skill", "ability", "lumina", "sanator", "talent", "perk", "unlocked", "learned", "upgraded", "maxed"],
+    "item": ["item", "potion", "consumable", "artifact", "relic", "material", "found", "got", "need", "using", "crafted"],
+    "build": ["build", "spec", "loadout", "setup", "going for", "trying", "using", "focusing on"],
+    "death": ["died", "death", "killed by", "lost to", "game over", "wiped"],
+    "quest": ["quest", "mission", "objective", "story", "started", "completed", "finished"]
+  },
+  "entityPatterns": {
+    "boss_name": "(?:beat|defeated|killed|fighting) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "floor_number": "(?:floor|level) (\\d+)",
+    "item_name": "(?:got|found|need|using) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "skill_name": "(?:unlocked|learned|upgraded) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)"
+  }
+}
+

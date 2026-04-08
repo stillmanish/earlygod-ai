@@ -1,0 +1,52 @@
+{
+  "gameTitle": "Ghost of Yotei",
+  "genre": "Open-world Action-Adventure",
+  "developer": "Sucker Punch Productions",
+  "releaseDate": "TBA 2025",
+  "platforms": ["PS5", "PC (expected)"],
+  
+  "overview": "Sequel to Ghost of Tsushima set in 1603 Hokkaido around Mount Yotei. Features a new protagonist in a new era of Japanese history with evolved combat and exploration mechanics.",
+  
+  "coreMechanics": [
+    "Enhanced stance system from first game",
+    "New protagonist with unique abilities",
+    "Expanded traversal mechanics",
+    "Dynamic weather affecting gameplay",
+    "Mount Yotei as central landmark",
+    "Improved stealth and combat fluidity",
+    "New ghost weapons and tools"
+  ],
+  
+  "terminology": {
+    "Yotei": "Sacred mountain in Hokkaido, central to the game",
+    "Hokkaido": "Northern island setting (formerly Ezo)",
+    "1603": "Time period - end of Sengoku period, start of Edo",
+    "New Protagonist": "Female lead replacing Jin Sakai",
+    "Evolved Ghost": "Continuation of Ghost fighting philosophy"
+  },
+  
+  "commonQuestions": [
+    "Is this a direct sequel to Ghost of Tsushima?",
+    "Who is the new protagonist?",
+    "Will Jin Sakai appear?",
+    "What time period is this set in?",
+    "Are the mechanics similar to the first game?",
+    "Is it set in the same region?",
+    "When is the release date?"
+  ],
+  
+  "insiderTips": [
+    "Set 329 years after Ghost of Tsushima",
+    "Different historical period with different conflicts",
+    "Expect refined version of first game's combat",
+    "Hokkaido features different terrain - mountains and snow",
+    "New protagonist allows fresh story without Jin's baggage"
+  ],
+  
+  "progressionSystem": {
+    "primary": "Expected to evolve from first game's system",
+    "note": "Details to be revealed closer to launch"
+  },
+  
+  "estimatedPlaytime": "Expected similar to first game: 25-50 hours"
+}

@@ -1,0 +1,24 @@
+{
+  "gameTitle": "Black Myth: Wukong",
+  "screenRegions": {
+    "health": { "x": 50, "y": 50, "width": 200, "height": 25, "type": "bar_percentage" },
+    "mana": { "x": 50, "y": 80, "width": 150, "height": 20, "type": "bar_percentage" },
+    "chapter": { "x": 100, "y": 900, "width": 200, "height": 30, "type": "text" }
+  },
+  "eventKeywords": {
+    "boss": ["yaoguai", "chief", "king", "elder", "whiteclad noble", "lingxuzi", "yellowbrow", "erlang", "defeated", "killed", "beat", "finally got"],
+    "location": ["black wind mountain", "yellow wind ridge", "new thunderclap temple", "chapter", "shrine", "reached", "arrived", "discovered"],
+    "quest": ["main story", "side quest", "destiny", "transformation", "started", "completed", "finished"],
+    "weapon": ["staff", "pillar", "cudgel", "upgraded", "crafted", "obtained"],
+    "armor": ["armor set", "head gear", "attire", "wearing", "equipped", "crafted"],
+    "skill": ["spell", "transformation", "spirit", "martial art", "stance", "unlocked", "learned", "upgraded"],
+    "item": ["gourd", "luojia", "spirit", "relic", "silk", "medicine", "found", "collected", "need"],
+    "transformation": ["red tides", "azure dust", "rock solid", "activated", "unlocked"]
+  },
+  "entityPatterns": {
+    "boss_name": "(?:defeated|killed|beat) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "location_name": "(?:in|at|reached) ([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "item_name": "(?:found|got|obtained|need) (?:the )?([A-Z][a-z]+(?: [A-Z][a-z]+)*)",
+    "chapter_number": "(?:chapter|ch) (\\d+)"
+  }
+}

@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EarlyGod.ai Overlay</title>
+    
+    <!-- Use inline SVG icons instead of Lucide CDN for reliability -->
+    <script>
+        // Fallback to inline SVG if Lucide fails
+        window.createInlineIcon = function(iconName, element) {
+            const icons = {
+                'mic': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/></svg>',
+                'mic-off': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19v3"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><rect x="9" y="2" width="6" height="13" rx="3"/><line x1="2" y1="2" x2="22" y2="22"/></svg>',
+                'gamepad-2': '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="8" width="16" height="10" rx="3" ry="3"/><path d="M8 16h8"/><path d="M16 12h.01"/><path d="M8 12h.01"/></svg>'
+            };
+            
+            if (icons[iconName] && element) {
+                element.innerHTML = icons[iconName];
+                element.style.display = 'inline-flex';
+                element.style.alignItems = 'center';
+            }
+        };
+        
+        // Initialize inline icons on load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize mic icon
+            const micIcon = document.getElementById('mic-icon');
+            if (micIcon) {
+                window.createInlineIcon('mic', micIcon);
+            }
+        });
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: transparent; /* ✅ Let overlay-container handle background */
+            color: #ffffff;
+            overflow: hidden;
+            /* ✅ REMOVED duplicate border - now on overlay-container */
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            user-select: none;
+            width: 100%; /* ✅ Use full window width (window is now 480px) */
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .overlay-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background: linear-gradient(180deg,
+                rgba(255, 255, 255, 0.06) 0%, /* ✅ Lighter gradient */
+                rgba(255, 255, 255, 0.03) 100%);
+            border-radius: 12px; /* ✅ Rounded corners */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow: hidden; /* ✅ Ensure content respects rounded corners */
+        }
+
+        /* ✅ Thin scroll bars */
+        ::-webkit-scrollbar {
+            width: 4px; /* ✅ Much thinner than default 8px+ */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .overlay-header {
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.06); /* ✅ Lighter header background */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: default;
+            -webkit-app-region: drag; /* ✅ Electron native dragging */
+            position: relative;
+            z-index: 1000;
+            border-radius: 12px 12px 0 0; /* ✅ Rounded top corners only */
+        }
+
+        .overlay-title {
+            font-size: 1.125rem; /* ✅ +2 points (was 1rem) */
+            font-weight: 600;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .step-counter {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-navigation {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .header-nav-btn {
+            width: 28px;
+            height: 28px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+        }
+
+        .header-nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .overlay-content {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-height: 0;
+            max-height: calc(100vh - 80px);
+            overflow: hidden;
+            -webkit-app-region: no-drag; /* ✅ Prevent content area from being draggable */
+            app-region: no-drag; /* ✅ Only header should be draggable */
+            border-radius: 0 0 12px 12px; /* ✅ Rounded bottom corners */
+        }
+
+        .current-step {
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            min-height: auto;
+        }
+
+        .step-title {
+            font-size: 0.95rem; /* ✅ +2 points (was 0.8rem) */
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            line-height: 1.3;
+        }
+
+        .step-action {
+            font-size: 0.875rem; /* ✅ +2 points (was 0.75rem) */
+            line-height: 1.4;
+            color: #ffffff;
+            margin-bottom: 1rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-observe {
+            font-size: 0.875rem; /* ✅ +2 points (was 0.75rem) */
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-fallback {
+            font-size: 0.875rem; /* ✅ +2 points (was 0.75rem) */
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .step-resources {
+            font-size: 0.875rem; /* ✅ +2 points (was 0.75rem) */
+            color: #ffffff;
+            background: rgba(16, 185, 129, 0.2);
+            padding: 0.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .navigation-controls {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-btn {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            /* ✅ REMOVED shadow */
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            transform: scale(1.1);
+            /* ✅ REMOVED shadow */
+        }
+
+        .nav-btn:active {
+            transform: scale(0.95);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .nav-btn:disabled:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.4);
+            transform: none;
+            /* ✅ REMOVED shadow */
+        }
+
+        .next-indicator {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 6px;
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .next-title {
+            font-size: 0.75rem;
+            color: #10b981;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .next-preview {
+            font-size: 0.7rem;
+            color: #6ee7b7;
+            opacity: 0.8;
+            line-height: 1.2;
+        }
+
+        /* Voice indicator is now inline in header, no absolute positioning needed */
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94a3b8;
+            font-size: 0.875rem;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Lucide icon styling for consistent appearance */
+        [data-lucide] {
+            width: 16px;
+            height: 16px;
+            color: currentColor;
+            vertical-align: middle;
+        }
+
+        /* ✅ Simple bold styling for important text */
+        strong {
+            font-weight: bold;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .ai-message-card {
+            font-size: 0.95rem; /* ✅ +2 points for AI text (was 0.8rem) */
+        }
+
+
+        /* User speech card font size */
+        #user-speech-card-overlay {
+            font-size: 0.95rem; /* ✅ +2 points (was 0.8rem) */
+        }
+
+        /* ✅ Slide-in animation for new messages */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .overlay-header {
+                padding: 0.75rem;
+            }
+
+            .overlay-content {
+                padding: 1rem;
+            }
+
+            .current-step {
+                min-height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay-container">
+        <div class="overlay-header">
+            <div class="overlay-title">EarlyGod.ai</div>
+            <div class="header-right" style="display: flex; align-items: center; gap: 0.5rem;">
+                <div id="mic-icon" style="width: 16px; height: 16px; color: #ffffff; cursor: pointer; flex-shrink: 0; display: inline-flex; align-items: center; -webkit-app-region: no-drag; pointer-events: auto; user-select: none;">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19v3"/>
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                        <rect x="9" y="2" width="6" height="13" rx="3"/>
+                    </svg>
+                </div>
+                <span style="font-size: 10px; color: rgba(255, 255, 255, 0.8); font-weight: 500;">Ctrl+Shift+M</span>
+                <div class="voice-indicator" id="voice-indicator" style="width: 8px; height: 8px; border-radius: 50%; background: #ef4444; animation: pulse 2s infinite; position: relative; top: 0; right: 0;"></div>
+            </div>
+        </div>
+
+        <div class="overlay-content">
+            <!-- ✅ User Speech - Microphone Icon -->
+            <div id="user-speech-card-overlay" style="display: none; background: transparent; border-left: 2px solid rgba(59, 130, 246, 0.5); padding: 0.25rem 0 0.25rem 0.75rem; margin-bottom: 0.75rem; font-size: 0.875rem;">
+                <div style="color: #f8fafc; line-height: 1.3; display: flex; align-items: center; gap: 0.5rem;">
+                    <!-- Microphone icon -->
+                    <div style="width: 16px; height: 16px; color: #60a5fa; display: inline-flex; align-items: center;">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 19v3"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <rect x="9" y="2" width="6" height="13" rx="3"/>
+                        </svg>
+                    </div>
+                    <span id="user-speech-text-overlay" style="color: #ffffff; font-weight: 400; text-shadow: 0 1px 2px rgba(0,0,0,0.3);">Listening...</span>
+                </div>
+            </div>
+            
+            <!-- AI Coaching Messages Container (empty by default, no placeholder) -->
+            <div id="ai-coaching-container" class="ai-coaching-container" style="flex: 1 1 auto; min-height: 0; max-height: 85%; overflow-y: auto; margin-bottom: 0.75rem; display: flex; flex-direction: column; word-wrap: break-word; overflow-wrap: break-word;">
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Voice indicator is now inline in header -->
+
+    <script>
+        // Use electronAPI from preload script instead of direct ipcRenderer
+        console.log('🚀 Overlay script loading...');
+        console.log('   🔍 electronAPI available:', !!window.electronAPI);
+        console.log('   🔍 electronAPI methods:', window.electronAPI ? Object.keys(window.electronAPI) : 'N/A');
+        console.log('   🔍 moveOverlay available:', !!(window.electronAPI && window.electronAPI.moveOverlay));
+        console.log('   🔍 Window keys:', Object.keys(window));
+
+        let currentStepIndex = 0;
+        let steps = [];
+        let isVoiceActive = false;
+        let isMicMuted = false;
+        
+        console.log('🎤 [OVERLAY INIT] Initial mic mute state:', isMicMuted);
+        
+        // Send logs to main process terminal
+        if (window.electronAPI && window.electronAPI.logToTerminal) {
+            window.electronAPI.logToTerminal('🎤 [OVERLAY] Script loaded successfully');
+            window.electronAPI.logToTerminal('🎤 [OVERLAY] Initial mic mute state: ' + isMicMuted);
+        }
+
+        // IMMEDIATE setup - don't wait for DOMContentLoaded
+        console.log('🎤 [OVERLAY] Setting up mic icon immediately...');
+        
+        function setupMicIcon() {
+            const micIcon = document.getElementById('mic-icon');
+            console.log('🎤 [SETUP] Mic icon found:', !!micIcon);
+            
+            if (window.electronAPI && window.electronAPI.logToTerminal) {
+                window.electronAPI.logToTerminal('🎤 [OVERLAY] Setting up mic icon - found: ' + !!micIcon);
+            }
+            
+            if (micIcon) {
+                console.log('🎤 [SETUP] Adding click listener...');
+                
+                // Remove any existing listeners first
+                micIcon.onclick = null;
+                
+                // Add the click listener
+                micIcon.addEventListener('click', function(event) {
+                    console.log('🎤 [CLICK] MIC CLICKED!');
+                    if (window.electronAPI && window.electronAPI.logToTerminal) {
+                        window.electronAPI.logToTerminal('🎤 [OVERLAY] MIC CLICKED!');
+                    }
+                    event.preventDefault();
+                    event.stopPropagation();
+                    toggleMicMute();
+                });
+                
+                console.log('✅ [SETUP] Click listener added successfully');
+                if (window.electronAPI && window.electronAPI.logToTerminal) {
+                    window.electronAPI.logToTerminal('✅ [OVERLAY] Mic click listener setup complete');
+                }
+            } else {
+                console.error('❌ [SETUP] Mic icon not found!');
+                if (window.electronAPI && window.electronAPI.logToTerminal) {
+                    window.electronAPI.logToTerminal('❌ [OVERLAY] Mic icon not found during setup!');
+                }
+                
+                // Try again in 100ms
+                setTimeout(setupMicIcon, 100);
+            }
+        }
+        
+        // Try setup immediately
+        setupMicIcon();
+
+        // DOM elements
+        const loadingDiv = document.getElementById('loading');
+        const currentStepDiv = document.getElementById('current-step');
+        const nextIndicatorDiv = document.getElementById('next-indicator');
+        const currentStepNumSpan = document.getElementById('current-step-num');
+        const totalStepsSpan = document.getElementById('total-steps');
+        const stepTitleDiv = document.getElementById('step-title');
+        const stepActionDiv = document.getElementById('step-action');
+        const stepObserveDiv = document.getElementById('step-observe');
+        const stepFallbackDiv = document.getElementById('step-fallback');
+        const stepResourcesDiv = document.getElementById('step-resources');
+        const nextPreviewDiv = document.getElementById('next-preview');
+        const headerPrevBtn = document.getElementById('header-prev-btn');
+        const headerNextBtn = document.getElementById('header-next-btn');
+        const voiceIndicator = document.getElementById('voice-indicator');
+
+        // Listen for guide data from main process using electronAPI
+        if (window.electronAPI) {
+            window.electronAPI.onGuideLoaded((event, guideData) => {
+                console.log('📋 Overlay received guide data via electronAPI:', {
+                    hasSteps: !!guideData.steps,
+                    stepsCount: guideData.steps?.length || 0,
+                    title: guideData.title,
+                    firstStepTitle: guideData.steps?.[0]?.title
+                });
+                
+                steps = guideData.steps || [];
+                currentStepIndex = 0;
+
+                if (steps.length > 0) {
+                    console.log('✅ Displaying guide steps in overlay');
+                    displayCurrentStep();
+                    updateNavigationButtons();
+                    showStepContent();
+                } else {
+                    console.log('❌ No steps received in overlay');
+                    showLoading();
+                }
+            });
+        } else {
+            console.error('❌ electronAPI not available in overlay!');
+        }
+
+        // Listen for step navigation using electronAPI AND direct IPC
+        if (window.electronAPI) {
+            window.electronAPI.onNavigateStep((event, direction) => {
+                console.log('🔄 Step navigation received via electronAPI:', direction);
+                navigateToStep(direction);
+            });
+        }
+
+        // Navigation from global shortcuts is handled via electronAPI (no need for require)
+        
+        // NEW: Listen for AI coaching messages
+        console.log('🎤 Setting up AI coaching listener in overlay...');
+        console.log('   electronAPI available:', !!window.electronAPI);
+        console.log('   onAICoachingMessage available:', !!window.electronAPI?.onAICoachingMessage);
+        
+        if (window.electronAPI && window.electronAPI.onAICoachingMessage) {
+            window.electronAPI.onAICoachingMessage((messageData) => {
+                console.log('🤖 AI coaching message received in overlay:', messageData);
+                
+                // ✅ Handle clear chat command
+                if (messageData.type === 'clear_chat') {
+                    console.log('🧹 [OVERLAY] Clearing chat interface');
+                    const container = document.getElementById('ai-coaching-container');
+                    if (container) {
+                        container.innerHTML = ''; // Empty, no placeholder
+                        console.log('   🧹 [OVERLAY] AI messages cleared');
+                    }
+                    
+                    const userSpeechCard = document.getElementById('user-speech-card-overlay');
+                    if (userSpeechCard) {
+                        userSpeechCard.style.display = 'none';
+                        console.log('   🧹 [OVERLAY] User speech card hidden');
+                    }
+                    return;
+                }
+                
+                displayAICoaching(messageData);
+            });
+            console.log('✅ AI coaching listener registered in overlay');
+        } else {
+            console.error('❌ Cannot register AI coaching listener - electronAPI not available');
+        }
+        
+        // NEW: Listen for user speech messages
+        if (window.electronAPI && window.electronAPI.onUserSpeechMessage) {
+            window.electronAPI.onUserSpeechMessage((speechData) => {
+                console.log('💬 User speech received in overlay:', speechData.text);
+                const userSpeechCard = document.getElementById('user-speech-card-overlay');
+                const userSpeechText = document.getElementById('user-speech-text-overlay');
+                if (userSpeechCard && userSpeechText) {
+                    userSpeechCard.style.display = 'block';
+                    userSpeechText.textContent = `"${speechData.text}"`;
+                }
+            });
+        }
+        
+        // 🔥 BOSS MODE: Listen for boss briefing (pinned at top, can be removed)
+        if (window.electronAPI && window.electronAPI.onBossBriefing) {
+            window.electronAPI.onBossBriefing((briefingData) => {
+                console.log('🔥 Boss briefing received in overlay:', briefingData);
+                displayBossBriefingInOverlay(briefingData.text);
+            });
+            console.log('✅ Boss briefing listener registered in overlay');
+        }
+
+        function navigateToStep(direction) {
+            if (direction === 'next' && currentStepIndex < steps.length - 1) {
+                currentStepIndex++;
+                displayCurrentStep();
+                console.log('➡️ Navigated to step:', currentStepIndex + 1);
+            } else if (direction === 'prev' && currentStepIndex > 0) {
+                currentStepIndex--;
+                displayCurrentStep();
+                console.log('⬅️ Navigated to step:', currentStepIndex + 1);
+            } else {
+                console.log('⚠️ Cannot navigate:', direction, 'Current:', currentStepIndex + 1, 'Total:', steps.length);
+            }
+
+            // Listen for voice commands using electronAPI
+            window.electronAPI.onVoiceCommand(async (event, command) => {
+                console.log('🎤 Voice command received:', command);
+                isVoiceActive = true;
+                voiceIndicator.style.display = 'block';
+
+                try {
+                    const response = await window.electronAPI.voiceCommand(command);
+                    console.log('Voice response:', response);
+                } catch (error) {
+                    console.error('Voice command error:', error);
+                } finally {
+                    setTimeout(() => {
+                        isVoiceActive = false;
+                        voiceIndicator.style.display = 'none';
+                    }, 2000);
+                }
+            });
+        }
+
+        // Header navigation button handlers
+        headerPrevBtn.addEventListener('click', () => {
+            if (currentStepIndex > 0) {
+                currentStepIndex--;
+                displayCurrentStep();
+                console.log('⬅️ Previous step via header:', currentStepIndex + 1);
+            }
+        });
+
+        headerNextBtn.addEventListener('click', () => {
+            if (currentStepIndex < steps.length - 1) {
+                currentStepIndex++;
+                displayCurrentStep();
+                console.log('➡️ Next step via header:', currentStepIndex + 1);
+            }
+        });
+
+        function displayCurrentStep() {
+            if (steps.length === 0) {
+                showLoading();
+                return;
+            }
+
+            const step = steps[currentStepIndex];
+
+            currentStepNumSpan.textContent = currentStepIndex + 1;
+            totalStepsSpan.textContent = steps.length;
+
+            stepTitleDiv.textContent = step.title;
+            stepActionDiv.textContent = step.action;
+
+            // Update observe section
+            const observeSpan = stepObserveDiv.querySelector('span');
+            observeSpan.textContent = step.observe || 'No specific cues provided';
+
+            // Update fallback section
+            const fallbackSpan = stepFallbackDiv.querySelector('span');
+            fallbackSpan.textContent = step.fallback || 'No fallback provided';
+
+            // Update resources section
+            const resourcesSpan = stepResourcesDiv.querySelector('span');
+            resourcesSpan.textContent = step.resources || 'No specific resources needed';
+
+            // Update next step preview
+            if (currentStepIndex < steps.length - 1) {
+                const nextStep = steps[currentStepIndex + 1];
+                nextPreviewDiv.textContent = nextStep.title;
+                nextIndicatorDiv.classList.remove('hidden');
+            } else {
+                nextIndicatorDiv.classList.add('hidden');
+            }
+
+            updateNavigationButtons();
+        }
+
+        function updateNavigationButtons() {
+            // Update header navigation buttons
+            headerPrevBtn.disabled = currentStepIndex === 0;
+            headerNextBtn.disabled = currentStepIndex >= steps.length - 1;
+        }
+
+        function showStepContent() {
+            loadingDiv.classList.add('hidden');
+            currentStepDiv.classList.remove('hidden');
+        }
+
+        function showLoading() {
+            loadingDiv.classList.remove('hidden');
+            currentStepDiv.classList.add('hidden');
+            nextIndicatorDiv.classList.add('hidden');
+        }
+
+        // Request guide data when overlay loads
+        console.log('🚀 Overlay loaded, requesting guide data...');
+        if (window.electronAPI) {
+            window.electronAPI.requestGuideData();
+            
+            // Also request data every 2 seconds until we get it
+            const dataRequestInterval = setInterval(() => {
+                if (steps.length === 0) {
+                    console.log('🔄 Still no guide data, requesting again...');
+                    window.electronAPI.requestGuideData();
+                } else {
+                    console.log('✅ Got guide data, stopping requests');
+                    clearInterval(dataRequestInterval);
+                }
+            }, 2000);
+        } else {
+            console.error('❌ electronAPI not available for requesting data!');
+        }
+
+        // Test dragging functionality immediately
+        console.log('🖱️ [OVERLAY] Testing dragging functionality...');
+        console.log('🔍 [OVERLAY] Header element found:', !!header);
+        console.log('🔍 [OVERLAY] Mouse events will be:', {
+            mousedown: 'addEventListener attached',
+            mousemove: 'global listener attached', 
+            mouseup: 'global listener attached'
+        });
+
+        // Enhanced keyboard shortcuts for gaming
+        document.addEventListener('keydown', (event) => {
+            // Prevent default to avoid interfering with game controls
+            event.preventDefault();
+            
+            switch (event.key) {
+                case 'ArrowLeft':
+                case 'a':
+                case 'A':
+                    if (currentStepIndex > 0) {
+                        currentStepIndex--;
+                        displayCurrentStep();
+                        console.log('⬅️ Previous step:', currentStepIndex + 1);
+                    }
+                    break;
+                case 'ArrowRight':
+                case 'd':
+                case 'D':
+                case ' ':
+                    if (currentStepIndex < steps.length - 1) {
+                        currentStepIndex++;
+                        displayCurrentStep();
+                        console.log('➡️ Next step:', currentStepIndex + 1);
+                    }
+                    break;
+                case 'Escape':
+                case 'F12':
+                    console.log('🙈 Hiding overlay');
+                    if (window.electronAPI) {
+                        window.electronAPI.hideOverlay();
+                    }
+                    break;
+                case 'F11':
+                    // Toggle DevTools for debugging
+                    console.log('🔧 Toggling DevTools');
+                    if (window.electronAPI) {
+                        window.electronAPI.toggleOverlayDevTools();
+                    }
+                    break;
+                case '1':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                    // Jump to specific step
+                    const stepNum = parseInt(event.key) - 1;
+                    if (stepNum >= 0 && stepNum < steps.length) {
+                        currentStepIndex = stepNum;
+                        displayCurrentStep();
+                        console.log('🎯 Jumped to step:', stepNum + 1);
+                    }
+                    break;
+            }
+        });
+
+        // NEW: Display AI coaching message in overlay with enhanced formatting
+        // 🔥 BOSS MODE: Display briefing at top (can be removed)
+        function displayBossBriefingInOverlay(briefingText) {
+            const container = document.getElementById('ai-coaching-container');
+            if (!container) return;
+            
+            console.log('🔥 [OVERLAY] Displaying boss briefing');
+            
+            // Remove existing briefing if any
+            const existing = document.getElementById('boss-briefing-overlay-pinned');
+            if (existing) existing.remove();
+            
+            // Create pinned briefing element
+            const briefingCard = document.createElement('div');
+            briefingCard.id = 'boss-briefing-overlay-pinned';
+            briefingCard.style.cssText = `
+                background: rgba(255, 255, 224, 0.15);
+                border: 2px solid rgba(255, 223, 0, 0.8);
+                padding: 0.75rem;
+                margin-bottom: 0.75rem;
+                border-radius: 0.5rem;
+                font-size: 0.875rem;
+                line-height: 1.5;
+                color: #ffffff;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            `;
+            
+            // Format briefing text (convert \n to <br>)
+            const formattedText = makeImportantTextBold(briefingText).replace(/\n/g, '<br>');
+            briefingCard.innerHTML = formattedText;
+            
+            // Insert at very top of container
+            container.insertBefore(briefingCard, container.firstChild);
+            console.log('✅ [OVERLAY] Boss briefing pinned at top');
+        }
+        
+        function displayAICoaching(messageData) {
+            const container = document.getElementById('ai-coaching-container');
+            
+            if (!container) {
+                console.warn('⚠️ AI coaching container not found in overlay');
+                return;
+            }
+            
+            let messageText = messageData.text || messageData.message || 'AI Coach ready';
+            
+            // ✅ FILTER: Skip "I can't see your screen" messages in overlay
+            if (messageText.toLowerCase().startsWith("i can't see your screen") || 
+                messageText.toLowerCase().startsWith("i cannot see your screen")) {
+                console.log('🚫 [OVERLAY] Filtering out "can\'t see screen" message');
+                return;
+            }
+            
+            // Extract RAG relevance
+            const ragRelevance = messageData.ragRelevance || 0;
+            const isGuideRelated = ragRelevance > 0.5;
+            console.log('🎨 [OVERLAY] Creating AI message - RAG:', ragRelevance, 'Guide related:', isGuideRelated);
+            
+            // ✅ AUTO-BOLD important gaming terms
+            messageText = makeImportantTextBold(messageText);
+            
+            // Subtle red background for guide-related
+            const backgroundColor = isGuideRelated ? 
+                'rgba(239, 68, 68, 0.04)' : // Very subtle red
+                'transparent';
+            
+            // Border color (RED for guide, orange for normal)
+            const borderColor = isGuideRelated ?
+                'rgba(239, 68, 68, 0.6)' :  // Red line for guide
+                'rgba(251, 146, 60, 0.6)';   // Orange line for normal
+            
+            const messageCard = document.createElement('div');
+            messageCard.className = 'ai-message-card';
+            messageCard.style.cssText = `
+                background: ${backgroundColor};
+                border-left: 2px solid ${borderColor};
+                padding: 0.5rem 0 0.5rem 0.75rem;
+                margin-bottom: 0.5rem;
+                animation: slideIn 0.15s ease-out;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+                max-width: 100%;
+            `;
+            
+            messageCard.innerHTML = `
+                <div style="font-size: 0.95rem; color: #ffffff; line-height: 1.4; font-weight: 400; word-wrap: break-word; overflow-wrap: break-word; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);">
+                    ${messageText}
+                </div>
+            `;
+            
+            // Append to container (stack messages)
+            container.appendChild(messageCard);
+            
+            // Scroll to latest message
+            messageCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            
+            console.log('🤖 AI coaching displayed in overlay (RAG:', ragRelevance.toFixed(2), ')');
+        }
+        
+        // ✅ Function to bold the MOST IMPORTANT parts of AI messages (simplified and working)
+        function makeImportantTextBold(text) {
+            try {
+                // Simple and reliable: Bold the first sentence only
+                return text.replace(
+                    /^([^.!?]+[.!?])/,
+                    '<strong>$1</strong>'
+                );
+            } catch (error) {
+                console.warn('⚠️ Error processing text for bold formatting:', error);
+                return text; // Return original text if processing fails
+            }
+        }
+        
+        // Auto-hide voice indicator
+        setInterval(() => {
+            if (!isVoiceActive) {
+                voiceIndicator.style.display = 'none';
+            }
+        }, 1000);
+        
+        // Mic mute functionality
+        const micIcon = document.getElementById('mic-icon');
+        
+        function toggleMicMute() {
+            console.log('🎤 =================== toggleMicMute() START ===================');
+            console.log('🎤 Current isMicMuted state:', isMicMuted);
+            console.log('🎤 typeof isMicMuted:', typeof isMicMuted);
+            
+            // Send to terminal
+            if (window.electronAPI && window.electronAPI.logToTerminal) {
+                window.electronAPI.logToTerminal('🎤 [OVERLAY] toggleMicMute() called - current state: ' + isMicMuted);
+            }
+            
+            try {
+                // Toggle state
+                isMicMuted = !isMicMuted;
+                console.log('🎤 NEW mute state after toggle:', isMicMuted);
+                console.log('🎤 State should be:', isMicMuted ? 'MUTED (red)' : 'UNMUTED (white)');
+                
+                // Send new state to terminal
+                if (window.electronAPI && window.electronAPI.logToTerminal) {
+                    window.electronAPI.logToTerminal('🎤 [OVERLAY] NEW state: ' + (isMicMuted ? 'MUTED' : 'UNMUTED'));
+                }
+                
+                const micIcon = document.getElementById('mic-icon');
+                console.log('🎤 micIcon element found:', !!micIcon);
+                if (!micIcon) {
+                    console.error('❌ CRITICAL: Mic icon element not found!');
+                    return;
+                }
+            
+                console.log('🎤 About to change icon appearance...');
+                if (isMicMuted) {
+                    console.log('🔇 APPLYING MUTED STATE (red icon with X)...');
+                    // Muted state - red muted mic icon with X
+                    micIcon.innerHTML = `
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 19v3"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <rect x="9" y="2" width="6" height="13" rx="3"/>
+                            <line x1="2" y1="2" x2="22" y2="22"/>
+                        </svg>
+                    `;
+                    micIcon.style.color = '#ef4444';
+                    console.log('🔇 ✅ MUTED ICON APPLIED - Should now be RED with X line');
+                } else {
+                    console.log('🎤 APPLYING UNMUTED STATE (white icon)...');
+                    // Unmuted state - white mic icon
+                    micIcon.innerHTML = `
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 19v3"/>
+                            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                            <rect x="9" y="2" width="6" height="13" rx="3"/>
+                        </svg>
+                    `;
+                    micIcon.style.color = '#ffffff';
+                    console.log('🎤 ✅ UNMUTED ICON APPLIED - Should now be WHITE');
+                }
+                
+                console.log('🎤 Current icon color after change:', micIcon.style.color);
+                console.log('🎤 Current icon innerHTML length:', micIcon.innerHTML.length);
+                
+                // Send mute status to main process
+                console.log('🎤 About to send IPC message...');
+                console.log('🎤 window.electronAPI exists:', !!window.electronAPI);
+                console.log('🎤 setMicMuted method exists:', !!(window.electronAPI && window.electronAPI.setMicMuted));
+                
+                if (window.electronAPI && window.electronAPI.setMicMuted) {
+                    console.log('🎤 Calling electronAPI.setMicMuted with:', isMicMuted);
+                    window.electronAPI.setMicMuted(isMicMuted);
+                    console.log('✅ IPC message sent successfully');
+                } else {
+                    console.error('❌ CRITICAL: electronAPI.setMicMuted not available');
+                    console.log('   Available electronAPI methods:', window.electronAPI ? Object.keys(window.electronAPI) : 'electronAPI is null');
+                }
+                
+                console.log('🎤 =================== toggleMicMute() END ===================');
+                
+            } catch (error) {
+                console.error('❌ CRITICAL ERROR in toggleMicMute():', error);
+                console.error('   Error stack:', error.stack);
+            }
+        }
+        
+        // Listen for global mic mute hotkey (Ctrl+Shift+M)
+        document.addEventListener('keydown', (event) => {
+            if (event.ctrlKey && event.shiftKey && event.key === 'M') {
+                event.preventDefault();
+                toggleMicMute();
+            }
+        });
+        
+        // Listen for mic mute toggle from main process hotkey
+        if (window.electronAPI && window.electronAPI.onToggleMicMute) {
+            window.electronAPI.onToggleMicMute(() => {
+                console.log('🎤 Hotkey triggered mic toggle');
+                toggleMicMute();
+            });
+        }
+        
+        // Set up mic icon click functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const micIcon = document.getElementById('mic-icon');
+            if (micIcon) {
+                console.log('✅ Mic icon found on load, setting up click handler');
+                console.log('   Element style:', micIcon.style.cssText);
+                
+                // Add click event listener
+                micIcon.addEventListener('click', (event) => {
+                    console.log('🎤 ================= MIC ICON CLICKED! =================');
+                    if (window.electronAPI && window.electronAPI.logToTerminal) {
+                        window.electronAPI.logToTerminal('🎤 [OVERLAY] MIC ICON CLICKED!');
+                    }
+                    console.log('🎤 Click event details:', {
+                        target: event.target,
+                        currentTarget: event.currentTarget,
+                        clientX: event.clientX,
+                        clientY: event.clientY,
+                        button: event.button
+                    });
+                    event.preventDefault();
+                    event.stopPropagation();
+                    console.log('🎤 About to call toggleMicMute()...');
+                    toggleMicMute();
+                    console.log('🎤 toggleMicMute() call completed');
+                });
+                
+                // Add hover effects
+                micIcon.addEventListener('mouseenter', () => {
+                    micIcon.style.transform = 'scale(1.1)';
+                    micIcon.style.transition = 'transform 0.2s ease';
+                    console.log('🎤 Mic icon hovered');
+                });
+                
+                micIcon.addEventListener('mouseleave', () => {
+                    micIcon.style.transform = 'scale(1)';
+                });
+                
+                // Test if element is clickable
+                console.log('   Computed style pointer-events:', window.getComputedStyle(micIcon).pointerEvents);
+                console.log('   Element bounds:', micIcon.getBoundingClientRect());
+                
+            } else {
+                console.error('❌ Mic icon not found on DOMContentLoaded');
+            }
+        });
+        
+        // Icons are initialized by inline SVG system
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+{
+  "gameTitle": "Black Myth: Wukong",
+  "genre": "Action RPG / Soulslike",
+  "developer": "Game Science",
+  "releaseDate": "2024-08-20",
+  "platforms": ["PC", "PS5", "Xbox Series X/S (later)"],
+  
+  "overview": "Action RPG based on the Chinese novel 'Journey to the West', following the Destined One on a quest related to Sun Wukong. Features transformation mechanics, staff-based combat, and Chinese mythology.",
+  
+  "coreMechanics": [
+    "Staff combat with light and heavy attacks",
+    "Focus system (resource for abilities)",
+    "Transformation abilities (72 transformations)",
+    "Spirit skills and spell casting",
+    "Talent tree progression",
+    "Boss rush structure through chapters",
+    "Gourd system (healing and buffs)",
+    "Equipment and relic customization"
+  ],
+  
+  "terminology": {
+    "Destined One": "The player character seeking Wukong's legacy",
+    "Sun Wukong": "The Monkey King from Journey to the West",
+    "Focus": "Resource for spells and abilities",
+    "Transformation": "Temporary form changes with unique abilities",
+    "Gourd": "Container for healing and enhancement items",
+    "Spirit": "Essence absorbed from defeated bosses",
+    "Relic": "Equipment providing passive bonuses",
+    "72 Transformations": "Wukong's legendary shapeshifting ability",
+    "Staff": "Primary weapon with extendable reach",
+    "Yaoguai": "Monsters and demons from Chinese mythology"
+  },
+  
+  "commonQuestions": [
+    "How do transformations work?",
+    "What does Focus do?",
+    "How do I upgrade my staff?",
+    "Which transformation should I use?",
+    "How do I get more gourds?",
+    "What are spirits for?",
+    "How do I unlock new abilities?",
+    "Is this connected to Journey to the West?"
+  ],
+  
+  "insiderTips": [
+    "Focus management is crucial - don't spam abilities",
+    "Each transformation has specific use cases - experiment",
+    "Boss spirits provide powerful abilities when absorbed",
+    "Staff combos can be extended with perfect timing",
+    "Explore thoroughly - many secrets are hidden",
+    "Some bosses are optional but provide valuable rewards",
+    "Dodge timing is tighter than most action games"
+  ],
+  
+  "progressionSystem": {
+    "primary": "Talent trees using experience and materials",
+    "equipment": "Staff upgrades and relic collection",
+    "abilities": "Unlock transformations and spells",
+    "gourds": "Increase healing capacity and add effects"
+  },
+  
+  "estimatedPlaytime": "25-35 hours for main story, 40+ for completionist"
+}

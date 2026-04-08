@@ -1,0 +1,74 @@
+{
+  "gameTitle": "Kingdom Come: Deliverance 2",
+  "genre": "Historical RPG",
+  "developer": "Warhorse Studios",
+  "releaseDate": "2025 (Expected)",
+  "platforms": ["PC", "PS5", "Xbox Series X/S"],
+  
+  "overview": "Historically accurate medieval RPG set in 15th century Bohemia. Features realistic combat, no magic, complex quest design, and emphasis on player skill development through practice.",
+  
+  "coreMechanics": [
+    "Directional melee combat system",
+    "Learn-by-doing skill progression",
+    "Realistic needs (hunger, sleep, hygiene)",
+    "Persuasion and speech checks",
+    "Lockpicking and pickpocketing minigames",
+    "Alchemy crafting system",
+    "Armor and weapon maintenance",
+    "Reputation system affecting NPC reactions"
+  ],
+  
+  "terminology": {
+    "Henry": "Protagonist from first game (continuing story)",
+    "Master Strike": "Advanced counter-attack technique",
+    "Riposte": "Block followed by immediate attack",
+    "Feint": "Fake attack to open enemy guard",
+    "Clinch": "Grappling for stamina advantage",
+    "Savior Schnapps": "Save item (limited saves)",
+    "Groschen": "Currency",
+    "Charisma": "Stat affecting speech and reputation",
+    "Vitality": "Health stat",
+    "Stat": "Attribute affecting capabilities",
+    "Perk": "Skill-based passive bonus",
+    "Quest Marker": "No GPS - follow directions"
+  },
+  
+  "commonQuestions": [
+    "How does the combat system work?",
+    "How do I save my game?",
+    "Why can't I read/lockpick well?",
+    "How do I improve my skills?",
+    "Where do I get better armor?",
+    "How do I make money early game?",
+    "Should I kill or spare this NPC?",
+    "How do I pass this speech check?"
+  ],
+  
+  "insiderTips": [
+    "Practice combat with trainer - you WILL be bad at first, that's intentional",
+    "Save often with Savior Schnapps - limited saves are by design",
+    "Reading skill required to read books - visit scribe early",
+    "Dirty clothes reduce charisma - bathe and repair gear regularly",
+    "Skills improve through use - want better swords? Use swords",
+    "Don't fight multiple enemies at once early - run or use bow",
+    "Steal carefully - getting caught ruins reputation permanently",
+    "Alchemy is powerful but requires recipe knowledge"
+  ],
+  
+  "progressionSystem": {
+    "skills": "Learn by doing - each action improves related skill",
+    "stats": "Improve through leveling skills in that category",
+    "perks": "Unlock at skill level thresholds",
+    "equipment": "Buy, loot, or earn through quests",
+    "reputation": "Based on actions in each location"
+  },
+  
+  "combatTips": {
+    "offense": "Chain combos after successful hits",
+    "defense": "Master strike timing is crucial for survival",
+    "stamina": "Manage carefully - exhaustion leaves you vulnerable",
+    "armor": "Heavier is better but affects stamina"
+  },
+  
+  "estimatedPlaytime": "40-60 hours main story, 80+ completionist"
+}
