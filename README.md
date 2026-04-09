@@ -148,7 +148,7 @@ Optional:
 | Ghost of Yotei | Action-Adventure | ✅ |
 | Black Myth: Wukong | Action RPG | ✅ |
 | Crimson Desert | Open-world RPG | ✅ |
-| Expedition 33 | Turn-based JRPG | ⚠️ Needs rewrite |
+| Expedition 33 | Turn-based JRPG | ✅ |
 | Kingdom Come: Deliverance II | Open-world RPG | ✅ |
 | Age of Empires II | RTS | ✅ |
 | Age of Empires IV | RTS | ✅ |
