@@ -43,14 +43,14 @@
         <img src="https://img.youtube.com/vi/jgtbSzAXFtY/hqdefault.jpg" alt="earlygod.ai demo 1" width="400">
       </a>
       <br>
-      <strong>▶️ <a href="https://www.youtube.com/watch?v=jgtbSzAXFtY">Demo 1: Real-time gameplay coaching</a></strong>
+      <strong>▶️ <a href="https://www.youtube.com/watch?v=jgtbSzAXFtY">Demo 1: earlygod.ai in action</a></strong>
     </td>
     <td align="center">
       <a href="https://www.youtube.com/watch?v=5UBd3aExrnU">
         <img src="https://img.youtube.com/vi/5UBd3aExrnU/hqdefault.jpg" alt="earlygod.ai demo 2" width="400">
       </a>
       <br>
-      <strong>▶️ <a href="https://www.youtube.com/watch?v=5UBd3aExrnU">Demo 2: Voice agent + game detection</a></strong>
+      <strong>▶️ <a href="https://www.youtube.com/watch?v=5UBd3aExrnU">Demo 2: earlygod.ai in another game</a></strong>
     </td>
   </tr>
 </table>
