@@ -4,7 +4,8 @@
 <p align="center"><em>Open-source · Electron · BYO API key (OpenAI / Gemini / Claude)</em></p>
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=5UBd3aExrnU">▶️ Watch the demo</a> ·
+  <a href="https://www.youtube.com/watch?v=jgtbSzAXFtY">▶️ Demo 1</a> ·
+  <a href="https://www.youtube.com/watch?v=5UBd3aExrnU">▶️ Demo 2</a> ·
   <a href="https://earlygod.ai">🌐 Website</a>
 </p>
 
@@ -35,13 +36,24 @@
 
 ## Demo
 
-<p align="center">
-  <a href="https://www.youtube.com/watch?v=5UBd3aExrnU">
-    <img src="https://img.youtube.com/vi/5UBd3aExrnU/maxresdefault.jpg" alt="earlygod.ai demo" width="560">
-  </a>
-  <br>
-  <strong>▶️ <a href="https://www.youtube.com/watch?v=5UBd3aExrnU">Watch the demo on YouTube</a></strong>
-</p>
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://www.youtube.com/watch?v=jgtbSzAXFtY">
+        <img src="https://img.youtube.com/vi/jgtbSzAXFtY/hqdefault.jpg" alt="earlygod.ai demo 1" width="400">
+      </a>
+      <br>
+      <strong>▶️ <a href="https://www.youtube.com/watch?v=jgtbSzAXFtY">Demo 1: Real-time gameplay coaching</a></strong>
+    </td>
+    <td align="center">
+      <a href="https://www.youtube.com/watch?v=5UBd3aExrnU">
+        <img src="https://img.youtube.com/vi/5UBd3aExrnU/hqdefault.jpg" alt="earlygod.ai demo 2" width="400">
+      </a>
+      <br>
+      <strong>▶️ <a href="https://www.youtube.com/watch?v=5UBd3aExrnU">Demo 2: Voice agent + game detection</a></strong>
+    </td>
+  </tr>
+</table>
 
 ---
 
