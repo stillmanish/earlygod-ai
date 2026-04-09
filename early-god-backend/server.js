@@ -15,7 +15,9 @@ const SaveFileWatcher = require('./SaveFileWatcher');
 
 // Load environment variables
 const log = (typeof process !== 'undefined' && process.env && process.env.DEBUG) ? console.log.bind(console) : () => {};
+// Load local .env first (package dir), then fall back to repo-root .env
 dotenv.config();
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 
 const app = express();
@@ -207,10 +209,13 @@ if (process.env.GEMINI_API_KEY && process.env.GEMINI_API_KEY !== 'your_gemini_ap
 }
 
 // Initialize Postgres pool with connection retry logic (if connection string available)
+// Accepts DATABASE_URL (standard) or NEON_DATABASE_API (legacy). If neither is set,
+// the app runs without a database — session memory becomes in-process only.
+const dbConnectionString = process.env.DATABASE_URL || process.env.NEON_DATABASE_API;
 let pool = null;
-if (process.env.NEON_DATABASE_API && process.env.NEON_DATABASE_API !== 'your_neon_database_connection_string_here') {
+if (dbConnectionString && dbConnectionString !== 'your_neon_database_connection_string_here') {
     const poolConfig = {
-        connectionString: process.env.NEON_DATABASE_API,
+        connectionString: dbConnectionString,
         ssl: { rejectUnauthorized: false },
         max: 20, // Maximum number of connections
         idleTimeoutMillis: 30000,

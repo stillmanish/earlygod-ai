@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const path = require('path');
 const WebSocket = require('ws');
 const http = require('http');
 const QuestModeLayer = require('./QuestModeLayer');
@@ -8,7 +9,9 @@ const MapService = require('./MapService');
 
 // Load environment variables
 const log = (typeof process !== 'undefined' && process.env && process.env.DEBUG) ? console.log.bind(console) : () => {};
+// Load local .env first (package dir), then fall back to repo-root .env
 dotenv.config();
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 const app = express();
 const PORT = process.env.PORT || 8081;

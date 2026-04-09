@@ -1,5 +1,7 @@
 <h1 align="center">🎮 earlygod.ai</h1>
-<p align="center"><strong>The AI gaming companion that watches your screen, knows your game, and helps you get better.</strong></p>
+<p align="center"><strong>The AI voice assistant for gamers. Talk to it while you play. It can see your screen, knows your game, searches the web for anything it doesn't, and answers in real time.</strong></p>
+<p align="center"><em>Quests · Builds · Weapons · Boss fights · Lore · Anything you need, hands-free, low-latency, voice-first.</em></p>
+<p align="center"><em>Open-source · Electron · BYO API key (OpenAI / Gemini / Claude)</em></p>
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=jgtbSzAXFtY">▶️ Watch the demo</a> ·
@@ -20,14 +22,15 @@
 
 ## What it is
 
-**earlygod.ai** is an AI-powered desktop companion for video games. It watches your screen in real time, understands what game you're playing, knows the game's mechanics from a built-in primer, and proactively helps you when you need it — through voice, an overlay, or text. No second monitor. No paused gameplay. No friction.
+**earlygod.ai** is a voice-first AI assistant you talk to while you play. Ask it anything — quests, builds, weapons, boss strategies, lore, where to go next — and it answers out loud, in real time, without you ever leaving the game. It sees your screen, knows what game you're in, and searches the web for anything it doesn't already have a primer for. No alt-tab. No pausing. No second monitor.
 
-- 🎯 **Auto-detects your game** — knows what you're playing without setup
-- 👀 **Watches your screen** — captures gameplay, identifies in-game events (boss fights, quests, level transitions)
-- 🧠 **Knows the game** — pre-loaded with primers for 13+ games (Elden Ring, Ghost of Yotei, AOE2, Black Myth: Wukong, Expedition 33, and more)
-- 🗣️ **Proactive voice coaching** — interjects with tips when it detects you might need them
-- 🔍 **In-context Q&A** — ask questions about the game and get instant answers grounded in the game's primer
-- ⚡ **Local-first** — runs on your machine, talks to your own API keys, no telemetry, no cloud lock-in
+- 🗣️ **Voice-first, conversational** — talk to it like a friend who's watched 200 hours of guides (Deepgram STT + ElevenLabs TTS)
+- 👀 **Sees your screen** — real-time vision understands what's happening in your game right now
+- 🌐 **Web search built-in** — works for brand-new releases and obscure games even without a pre-built primer
+- ⚡ **Low latency** — answers come back fast enough to use mid-fight, not after you've already died
+- 🎯 **Auto-detects your game** — no setup, no manual configuration
+- 🧠 **13 game primers included** — Elden Ring, Ghost of Yotei, Black Myth: Wukong, AOE2, Expedition 33, and more
+- 🔒 **Local-first, BYO keys** — runs on your machine, uses your own API keys, zero telemetry, no cloud lock-in
 
 ---
 
@@ -91,35 +94,28 @@ The two backends are deliberately split so heavy vision analysis (quest-mode) do
 - **Windows 10/11** (Mac/Linux: see [Platform Support](#platform-support))
 - A game running in **windowed** or **borderless windowed** mode (overlay won't show in fullscreen exclusive)
 - API keys for your chosen providers (see [API Keys](#api-keys))
-- A Postgres database (recommended: free [Neon](https://neon.tech) tier)
+- Postgres is **optional** — if not configured, the app runs with in-process memory only
 
 ### Installation
 
 ```bash
-# 1. Clone the repo
+# 1. Clone
 git clone https://github.com/stillmanish/earlygod-ai.git
 cd earlygod-ai
 
-# 2. Install dependencies for both backends and the frontend
-cd early-god-backend && npm install && cd ..
-cd boss-mode-backend && npm install && cd ..
-cd frontend && npm install && cd ..
+# 2. Install everything (all 3 packages via one command)
+npm install
 
-# 3. Configure API keys
-cp early-god-backend/.env.example early-god-backend/.env
-cp boss-mode-backend/.env.example boss-mode-backend/.env
-# Open both .env files and fill in your keys
+# 3. Interactive setup — paste your API keys, writes .env for you
+npm run setup
 
-# 4. Set up the database (one-time)
-# Connect to your Postgres instance and run:
-# psql $DATABASE_URL < early-god-backend/database.sql
-
-# 5. Start everything
-./start.sh    # Mac/Linux
-start.bat     # Windows
+# 4. Start everything (both backends + Electron frontend)
+npm start
 ```
 
-The startup script launches both backends and the Electron frontend. Press **F12** to toggle the in-game overlay.
+That's it. Press **F12** to toggle the in-game overlay.
+
+Want a Postgres-backed memory layer? Get a free Neon database at [neon.tech](https://neon.tech), paste the connection string when `npm run setup` asks, then run `psql $DATABASE_URL < early-god-backend/database.sql` to load the schema.
 
 ---
 
@@ -219,6 +215,60 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 ---
 
+## FAQ
+
+### What games does this work with?
+Any game, really. 13 games ship with pre-built primers (Elden Ring, Black Myth: Wukong, Ghost of Tsushima, Ghost of Yotei, Age of Empires II, Age of Empires IV, Europa Universalis V, Crimson Desert, Kingdom Come: Deliverance II, Expedition 33, League of Legends, and more) — but for anything else, earlygod.ai falls back to live web search, so it works for brand-new releases and obscure titles too. You can also add your own primer in ~30 minutes by writing a JSON file in `frontend/game-primers/`.
+
+### Does it work for games that don't have a primer?
+Yes. When a game isn't in the primer library, earlygod.ai uses live web search to pull answers from the open web. That means day-one releases, indie games, and anything niche all work out of the box — you just won't get the tighter, primer-grounded answers you'd get for the 13 supported titles.
+
+### How is this different from a wiki or YouTube guide?
+Wikis and YouTube guides require you to pause the game, alt-tab, search, and read. earlygod.ai watches your screen in real time, knows what's happening in your game, and proactively coaches you through it via voice — no second screen, no pausing, no friction.
+
+### Does it work offline?
+Mostly no — the AI providers (OpenAI / Gemini / Anthropic for reasoning, Deepgram for transcription, ElevenLabs for voice) all need internet to call their APIs. The game primer search is fully local, but the rest needs cloud calls. If you want fully offline, swap in Ollama for the LLM and a local Whisper for transcription (PRs welcome).
+
+### Is my gameplay data private?
+Your screen captures, audio, and game data go directly from your machine to the API providers you configure (using YOUR API keys). earlygod.ai itself collects zero telemetry. There is no analytics server. There is no cloud sync. The maintainer has zero visibility into how you use this.
+
+### Can I add my own game?
+Yes — copy any JSON file in `frontend/game-primers/` as a template. Fill in the game's mechanics, terminology, and tips. Drop it in the same directory and earlygod.ai picks it up automatically. Takes about 30 minutes for a decent primer.
+
+### Is it free?
+The earlygod.ai code is MIT licensed and free forever. The AI providers it talks to have free tiers:
+- **Google Gemini:** Free with rate limits — best free option
+- **Deepgram:** $200 free credit on signup (hundreds of hours of streaming transcription)
+- **ElevenLabs:** Free tier with ~10 minutes of speech per month
+- **Neon Postgres:** Free 0.5 GB tier
+- **Total cost using free tiers: $0/month**
+
+### Will I get banned in online games?
+**Maybe** — see the warning above. Some online games with anti-cheat (Valorant, CS2, Fortnite, R6 Siege, Apex Legends) flag screen capture tools as cheats. **Use earlygod.ai with single-player or co-op PvE games only.** Don't blame the maintainer if you get banned in competitive games.
+
+### Why both OpenAI AND Gemini AND Anthropic support?
+Pluggable. Pick the model that works best for you. The reasoning layer is provider-agnostic — you set whichever API key you have and the rest just works.
+
+### What's the architecture in plain English?
+A 7-layer pipeline that runs in real time during gameplay:
+1. Capture your screen + microphone
+2. Detect what game you're playing
+3. Detect in-game events (boss appears, low HP, level transition, etc.)
+4. Combine visual + audio + game state into context
+5. Look up relevant info from the game primer + memory
+6. Decide if it's worth interjecting
+7. Speak the tip via TTS or show it in the overlay
+
+Two backend services keep the heavy vision work from blocking real-time audio.
+
+### Can I use this for streaming / content creation?
+Yes — it's MIT, do whatever you want. If you build a streamer overlay or Twitch integration, open an issue and I'll link to your fork.
+
+### Does it run on Mac/Linux?
+Not yet. The game window detection layer uses Windows APIs. Mac/Linux support would need a port of `frontend/gameDetection.js` to use platform-native APIs. PRs welcome.
+
+---
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
@@ -227,6 +277,6 @@ MIT — see [LICENSE](LICENSE).
 
 ## Credits
 
-Inspired by [LudereAI](https://github.com/0xRoco/LudereAI), [Cluely](https://cluely.com), [Glass](https://github.com/topics/open-source-cluely), and the broader open-source AI assistant community.
-
 Built by [@stillmanish](https://github.com/stillmanish).
+
+Standing on the shoulders of the open-source AI tooling community — Electron, Node.js, the Hugging Face ecosystem, and the AI providers (OpenAI, Google Gemini, Anthropic, Deepgram, ElevenLabs) who make this kind of project possible.
