@@ -2,36 +2,49 @@
   "gameTitle": "Crimson Desert",
   "genre": "Open World Action RPG",
   "developer": "Pearl Abyss",
-  "releaseDate": "2025-03-18",
-  "platforms": ["PC", "PS5", "Xbox Series X/S"],
+  "releaseDate": "2026-03-19",
+  "platforms": ["PC", "PS5", "Xbox Series X/S", "macOS"],
 
-  "overview": "Open world action RPG following Kliff and the Greymanes mercenary band across the continent of Pywel. Features deep melee combat with parrying, grappling, mounted combat, and multiple playable characters. Known for massive boss fights including mountable colossal creatures, aerial dragon chases, and a blend of swordplay with wrestling moves.",
+  "overview": "Open world action RPG following Kliff and the Greymanes mercenary band across the continent of Pywel. Features deep combo-driven melee combat inspired by fighting games, with parrying, grappling, mounted combat, and three playable characters with unique skill trees. Seamless open world (~150 km² playable), no loading screens. Progression is artifact-based (no XP/levels). Boss fights are a highlight — souls-like difficulty with spectacle. Single-player only.",
 
   "coreMechanics": [
-    "Parry and Guard Break system — parry depletes boss Guard bar, opening damage windows",
-    "Grappling and wrestling moves — lariat, body slam, dropkick, throws",
-    "Weapon swapping between one-handed, two-handed, and ranged",
-    "Elemental imbuing — lightning, frost, storm, flame",
-    "Dragon mount for aerial combat and traversal",
-    "Mountable bosses — climb colossal enemies and attack weak points",
-    "Abyss Artifact progression — spend to unlock skills and boost stats",
-    "Meat-based healing — heal while attacking with quick moves",
-    "Multiple playable characters — Kliff, Damiane, Oongka with unique skill trees",
-    "Bell system — ring 8 hidden bells to reveal the full map"
+    "Combo-driven combat — chain light attacks, heavy attacks, grapples, dodges. Rewards aggression over turtling.",
+    "Parry system — hold guard, release on incoming attack. Green flash = successful parry, enemy staggers, ~2.5x damage window.",
+    "Guard Bar — bosses have a Guard meter. Parries and grappling moves deplete it fastest. When broken, massive damage window.",
+    "Grappling and wrestling moves — lariat, body slam, dropkick, throws. High stagger on humanoid bosses.",
+    "Weapon swapping between one-handed, two-handed, and ranged mid-combat.",
+    "Elemental imbuing — lightning, frost, storm, flame. Match element to boss weakness for extra damage.",
+    "Mountable bosses — climb colossal enemies and attack weak points.",
+    "Dragon mount for aerial combat and traversal.",
+    "Abyss Artifact progression — no XP/levels. Collect artifacts from quests/bosses/exploration, spend on triangular skill tree.",
+    "Watch and Learn system — observe enemies mid-fight to unlock specific combat skills.",
+    "Meat-based healing — eat food during combat (no cooldown, just animation). Heal while attacking with quick moves.",
+    "Three playable characters — Kliff, Damiane, Oongka. Switch instantly via F1/Up D-Pad radial menu.",
+    "Bell system — ring 8 hidden bells to reveal the full map and nearby points of interest.",
+    "Fast travel — Abyss Nexus (near towns, discover to unlock) and hidden Abyss Cressets (require puzzles/abilities)."
   ],
 
   "terminology": {
-    "Kliff": "Main protagonist, leader of the Greymanes",
-    "Greymanes": "Kliff's mercenary band, the central group",
-    "Damiane": "Playable Greymane member, shield/sword specialist",
-    "Oongka": "Playable Greymane member, berserker with rage abilities",
-    "Pywel": "The continent where the game takes place",
-    "Abyss Artifact": "Currency for unlocking skills and upgrading stats",
-    "Abyss Gear": "Special modifiers on unique weapons",
-    "Guard Bar": "Boss defense meter — deplete it to stagger them",
-    "Parry": "Block right before impact to interrupt attacks and drain Guard",
-    "Spirit": "Resource stat for special abilities",
-    "Bells": "8 hidden bells that reveal map regions when rung"
+    "Kliff": "Main protagonist, leader of the Greymanes. All-rounder with widest weapon variety.",
+    "Greymanes": "Kliff's mercenary band. Central group — rebuilding them is the core quest.",
+    "Damiane": "Playable character. Glass cannon — speed, ranged attacks, crowd control. Unlocks mid-Chapter 3.",
+    "Oongka": "Playable character. Heavy tank, AoE damage dealer. Unlocks Chapter 7 + side quest 'Gentle Sound of Flowing River'.",
+    "Myurdin": "Main antagonist. Leader of the Black Bears mercenary group. Wields dark Abyss powers. Recurring boss.",
+    "Pywel": "The continent where the game takes place. Five regions: Hernand, Pailune, Demeniss, Delesyia, Crimson Desert.",
+    "Abyss Artifact": "Currency for unlocking skills and upgrading stats on the triangular skill tree.",
+    "Sealed Artifact": "Artifact that requires completing a challenge to unlock.",
+    "Faded Artifact": "Craftable respec item — lets you reallocate all spent artifacts.",
+    "Abyss Gear": "Special modifiers on unique weapons found in treasure chests.",
+    "Guard Bar": "Boss defense meter — deplete it via parries and grapples to stagger them.",
+    "Parry": "Block right before impact. Green flash = success. Drains Guard and opens damage window.",
+    "Spirit": "Resource stat for special abilities. One of three skill tree branches.",
+    "Bells": "8 hidden bells across Pywel that reveal map regions when rung.",
+    "Abyss Nexus": "Standard fast travel points near towns and landmarks. Must discover first.",
+    "Abyss Cresset": "Hidden fast travel points requiring puzzles or specific abilities to activate.",
+    "Nature's Echo": "Green skill tree ability for Kliff. Duplicates heavy attacks. Very strong early game.",
+    "Scholastone": "Location where crafting unlocks in Chapter 4.",
+    "Hernand": "Starting region. Has butcher shop for cheap Tough Meat.",
+    "Black Bears": "Rival mercenary group led by Myurdin."
   },
 
   "commonQuestions": [
@@ -41,36 +54,74 @@
     "Where are the 8 map bells?",
     "What are Abyss Artifacts and how do I spend them?",
     "How do I switch between characters?",
+    "How do I unlock Damiane?",
+    "How do I unlock Oongka?",
     "What's the best weapon type for this boss?",
     "How do grappling moves work?",
     "How do I heal during combat?",
-    "Where do I find unique weapons?"
+    "Where do I find unique weapons?",
+    "How do I respec my skill tree?",
+    "Where is the fast travel point near here?",
+    "What element is this boss weak to?"
   ],
 
   "insiderTips": [
-    "Parrying is the fastest way to break boss Guard — prioritize learning timing",
-    "Stock up on meat before boss fights — you WILL take damage",
-    "Heal while attacking with quick attacks, don't stop to heal at low HP",
-    "Some bosses can be mounted — look for climbing prompts on large creatures",
-    "Grappling moves deal high stagger damage and work on humanoid bosses",
-    "Ring bells early — they reveal the map and nearby points of interest",
-    "Unique weapons from treasure chests come with Abyss Gears pre-equipped",
-    "Ranged weapons are useful for aerial encounters and weak point targeting",
-    "Elemental imbuing adds extra damage — match element to boss weakness",
-    "Faction quests give bag rewards — check the faction menu for specifics"
+    "Stock 100+ Grilled Meat before every boss fight — buy cheap Tough Meat from Hernand butcher, cook it. This is the #1 tip.",
+    "Wear the heaviest armor you can find immediately — there is ZERO weight penalty. Buy merchant's plate in Hernand.",
+    "Unlock Health level 4 + Endurance level 4 before pushing the main story forward.",
+    "Buy Nature's Echo skill (green tree) for Kliff early — it duplicates heavy attacks and is extremely strong.",
+    "Ring the 8 Hidden Bells as soon as you can — they reveal the full map, way faster than exploring blind.",
+    "Don't hoard Abyss Artifacts — spend them freely. You can full-respec later with Faded Artifacts (craftable at Witch cauldrons).",
+    "Parrying is the fastest way to break boss Guard — prioritize learning the timing. Watch for the green flash.",
+    "Heal while attacking with quick attacks during boss fights — don't stop and stand still to heal.",
+    "Some bosses can be mounted — look for climbing prompts on large creatures.",
+    "Grappling moves deal high stagger damage and work on humanoid bosses — use them to break Guard fast.",
+    "Unique weapons from treasure chests come with Abyss Gears pre-equipped — always worth grabbing.",
+    "Elemental imbuing adds extra damage — match element to boss weakness if you know it.",
+    "Don't miss Oongka's unlock quest 'Gentle Sound of Flowing River' in Chapter 7 — he's the strongest AoE character.",
+    "Crafting unlocks in Chapter 4 at Scholastone — research projects take real time (hours) and cost silver.",
+    "Combat rewards aggression — chaining combos builds damage faster than playing defensively."
   ],
 
   "progressionSystem": {
-    "primary": "Abyss Artifacts spent on skill trees (Stamina, Health, Spirit stats)",
-    "equipment": "Weapons from shops, loot, chests. Unique weapons from quests/treasures",
-    "skills": "Per-character skill trees — combat, grappling, elemental, utility",
-    "exploration": "8 bells reveal map, discover fast travel points and hidden areas"
+    "primary": "Abyss Artifacts spent on triangular skill tree (three branches: Health, Stamina, Spirit). No XP or levels.",
+    "equipment": "Weapons from shops, loot, and chests. Unique weapons from quests/treasures come with Abyss Gears. No armor weight penalty — always wear heaviest available.",
+    "skills": "Per-character skill trees. Kliff has the widest variety. Watch and Learn system: observe enemies mid-fight to unlock specific skills.",
+    "respec": "Craft Faded Abyss Artifacts at Witch cauldrons for full respec.",
+    "exploration": "8 bells reveal map regions. Discover Abyss Nexus (towns) and Abyss Cressets (hidden) for fast travel."
+  },
+
+  "playableCharacters": {
+    "Kliff": {
+      "unlock": "Available from start",
+      "playstyle": "All-rounder, widest weapon variety",
+      "weapons": "Sword+shield, bow, polearms, two-handed weapons, grapples, fists (with Combat God's Plate Gloves)",
+      "strongBuilds": ["Nature's Echo + Tauria's Curved Sword (strong early)", "Boss Slayer (maximize homing projectiles)", "Monk Fighter (Combat God's Plate Gloves)"]
+    },
+    "Damiane": {
+      "unlock": "Mid-Chapter 3",
+      "playstyle": "Glass cannon — speed, ranged attacks, crowd control",
+      "weapons": "Fast weapons, ranged attacks",
+      "strongBuilds": ["Speed assassin", "Ranged crowd control"]
+    },
+    "Oongka": {
+      "unlock": "Chapter 7, then complete side quest 'Gentle Sound of Flowing River'",
+      "playstyle": "Heavy tank, AoE damage dealer",
+      "weapons": "Axes, cannons, dual-wield",
+      "strongBuilds": ["Beyblade (Raging Lightning skill for AoE)", "Cannon tank"]
+    }
   },
 
   "startingAreas": [
-    "Hernand",
+    "Hernand — starting region. Has butcher, blacksmith, merchant for early gear.",
     "Tommaso"
   ],
 
-  "estimatedPlaytime": "30-50 hours for main story, 60+ for completionist"
+  "estimatedPlaytime": "30-50 hours for main story, 60-80+ for completionist",
+
+  "knownBosses": {
+    "Matthias": "Early boss. Classic knight, slow predictable sword attacks. Chain 3 quick + 3 heavy attacks to interrupt.",
+    "Hornsplitter": "Mid-early boss. Faster, fire-based attacks. Requires timed parries on melee attacks.",
+    "Myurdin": "Main antagonist. Recurring boss with increasing difficulty and dark Abyss powers."
+  }
 }
